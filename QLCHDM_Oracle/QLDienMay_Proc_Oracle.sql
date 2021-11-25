@@ -1,5 +1,5 @@
 ---Proc tạo thẻ cho khách hàng---
-CREATE OR REPLACE PROCEDURE Tao_The_Cho_Khach_Hang (ma_khach_hang CHAR) AS
+CREATE OR REPLACE PROCEDURE Proc_Tao_The_Cho_Khach_Hang (ma_khach_hang CHAR) AS
 check_kh NUMBER;
 dem_the NUMBER;
    BEGIN
@@ -17,11 +17,11 @@ dem_the NUMBER;
     END IF;
    END;
 
-EXECUTE Tao_The_Cho_Khach_Hang('KH00000001');
+EXECUTE Proc_Tao_The_Cho_Khach_Hang('KH00000001');
 SELECT * FROM TheTichDiem;
 
 ---Proc tạo đơn hàng online---
-CREATE OR REPLACE PROCEDURE Tao_Don_Hang_Online (ma_khach_hang IN CHAR, ma_voucher IN CHAR, tong_gia_tri_don IN DECIMAL, ma_don OUT CHAR) IS
+CREATE OR REPLACE PROCEDURE Proc_Tao_Don_Hang_Online (ma_khach_hang IN CHAR, ma_voucher IN CHAR, tong_gia_tri_don IN DECIMAL, ma_don OUT CHAR) IS
 check_kh NUMBER;
 ngay_bd TIMESTAMP;
 ngay_kt TIMESTAMP;
@@ -94,11 +94,11 @@ madh1 CHAR(10);
 madh2 CHAR(10);
 madh3 CHAR(10);
 BEGIN
-    Tao_Don_Hang_Online('KH00000001','HAPPY2021',38052000,madh1); 
+    Proc_Tao_Don_Hang_Online('KH00000001','HAPPY2021',38052000,madh1); 
     DBMS_OUTPUT.put_line(madh1);
-    Tao_Don_Hang_Online('KH00000001',NULL,12990000,madh2);
+    Proc_Tao_Don_Hang_Online('KH00000001',NULL,12990000,madh2);
     DBMS_OUTPUT.put_line(madh2);
-    Tao_Don_Hang_Online('KH00000002',NULL,37990000,madh3); 
+    Proc_Tao_Don_Hang_Online('KH00000002',NULL,37990000,madh3); 
     DBMS_OUTPUT.put_line(madh3);
     INSERT INTO ChiTietDonHang(MaDonHang,MaSanPham,SoLuong,DonGia,ThanhTien)VALUES(madh1,'SP00000001',2,12990000.00,25980000);
     INSERT INTO ChiTietDonHang(MaDonHang,MaSanPham,SoLuong,DonGia,ThanhTien) VALUES(madh1,'SP00000004',1,16300000,16300000);
@@ -115,7 +115,7 @@ COMMIT;
 
 
 ---Proc xác nhận đơn hàng---
-CREATE OR REPLACE PROCEDURE Xac_Nhan_Don_Hang (ma_don_hang IN CHAR, ma_nhan_vien IN CHAR, tinh_trang_xac_nhan IN NUMBER) IS
+CREATE OR REPLACE PROCEDURE Proc_Xac_Nhan_Don_Hang (ma_don_hang IN CHAR, ma_nhan_vien IN CHAR, tinh_trang_xac_nhan IN NUMBER) IS
 tinh_trang_hien_tai NUMBER(1);
    BEGIN
         SET TRANSACTION READ WRITE;
@@ -139,14 +139,14 @@ tinh_trang_hien_tai NUMBER(1);
             ROLLBACK;
             raise_application_error(-20001,'Lỗi: Input sai hoặc tình trạng đã được cập nhật, kiểm tra lại!');
    END;
-EXECUTE Xac_Nhan_Don_Hang('DH00000001','NV00000001',0);
-EXECUTE Xac_Nhan_Don_Hang('DH00000003','NV00000001',0);
+EXECUTE Proc_Xac_Nhan_Don_Hang('DH00000001','NV00000001',0);
+EXECUTE Proc_Xac_Nhan_Don_Hang('DH00000003','NV00000001',0);
 SELECT * FROM DonHang WHERE MaDonHang = 'DH00000001';
 UPDATE DonHang SET TinhTrangXacNhan = NULL, TinhTrangThanhToan = NULL, 
                     TinhTrangGiaoHang = NULL, NhanVienPhuTrach = NULL WHERE MaDonHang = 'DH00000001';
 
 ---Proc thanh toán đơn hàng---
-CREATE OR REPLACE PROCEDURE Thanh_Toan_Don_Hang (ma_don_hang IN CHAR, ma_nhan_vien IN CHAR, tinh_trang_thanh_toan IN NUMBER) IS
+CREATE OR REPLACE PROCEDURE Proc_Thanh_Toan_Don_Hang (ma_don_hang IN CHAR, ma_nhan_vien IN CHAR, tinh_trang_thanh_toan IN NUMBER) IS
 tinh_trang_hien_tai NUMBER(1);
    BEGIN
         SET TRANSACTION READ WRITE;
@@ -171,14 +171,14 @@ tinh_trang_hien_tai NUMBER(1);
             raise_application_error(-20001,'Lỗi: Input sai hoặc tình trạng đã được cập nhật, kiểm tra lại!');
    END;
    
-EXECUTE Thanh_Toan_Don_Hang('DH00000001','NV00000001',0);
-EXECUTE Thanh_Toan_Don_Hang('DH00000003','NV00000001',0);
+EXECUTE Proc_Thanh_Toan_Don_Hang('DH00000001','NV00000001',0);
+EXECUTE Proc_Thanh_Toan_Don_Hang('DH00000003','NV00000001',0);
 SELECT * FROM DonHang WHERE MaDonHang = 'DH00000001';
 UPDATE DonHang SET TinhTrangThanhToan = NULL, TinhTrangGiaoHang = NULL, NhanVienPhuTrach = NULL WHERE MaDonHang = 'DH00000001';
 COMMIT;
 
 ---Proc xuất kho---
-CREATE OR REPLACE PROCEDURE Xuat_Phieu_Xuat (nhan_vien_tao_phieu IN CHAR, ma_don_hang IN CHAR) IS
+CREATE OR REPLACE PROCEDURE Proc_Xuat_Phieu_Xuat (nhan_vien_tao_phieu IN CHAR, ma_don_hang IN CHAR) IS
 ---declare bien kiem tra
 check_phieu NUMBER := 0;
 ma_cua_hang CHAR(5);
@@ -310,8 +310,8 @@ CURSOR c_ctdh is SELECT MaSanPham, SoLuong, DonGia FROM ChiTietDonHang WHERE MaD
             END IF;---end kiem tra xuat kho   
    END;
 set serveroutput on format wrapped;
-EXECUTE Xuat_Phieu_Xuat('NV00000001','DH00000001')
-EXECUTE Xuat_Phieu_Xuat('NV00000001','DH00000003')
+EXECUTE Proc_Xuat_Phieu_Xuat('NV00000001','DH00000001')
+EXECUTE Proc_Xuat_Phieu_Xuat('NV00000001','DH00000003')
 DELETE FROM PHIEUXUAT;
 DELETE FROM CHITIETPHIEUXUAT;
 SELECT * FROM CHITIETDONHANG;
@@ -322,7 +322,99 @@ UPDATE CHITIETKHO SET SoLuong = 1 WHERE MaKho = 'K0001' AND MaSanPham = 'SP00000
 
 dbms_output.put_line('Bat dau');
 
-
-
-
-           
+---Proc tình trạng giao hàng---
+CREATE OR REPLACE PROCEDURE Proc_Tinh_Trang_Giao_Hang (ma_don_hang IN CHAR, ma_nhan_vien IN CHAR, tinh_trang_giao_hang IN NUMBER) IS
+---check
+tinh_trang_hien_tai NUMBER(1);
+dem_px NUMBER := 0;
+dem_the NUMBER(1) := 0;
+---ma
+ma_khach_hang CHAR(10);
+ma_the CHAR(10);
+get_ma_kho CHAR(5);
+--tongtiendon va diem
+tong_gia_tri DECIMAL(18,2);
+tong_diem NUMBER(38);
+---declare cursor ctdh
+c_dh_sp CHAR(10); 
+c_dh_sl NUMBER; 
+CURSOR c_ctdh is SELECT MaSanPham, SoLuong FROM ChiTietDonHang WHERE MaDonHang = ma_don_hang;
+---declare cursor ctpx
+c_px_mapx CHAR(10); 
+c_px_sp CHAR(10); 
+c_px_sl NUMBER;
+CURSOR c_ctpx is SELECT ct.MaPhieuXuat, ct.MaSanPham, ct.SoLuong FROM ChiTietPhieuXuat ct INNER JOIN PhieuXuat px ON ct.MaPhieuXuat = px.MaPhieuXuat AND px.MaDonHang = ma_don_hang;
+BEGIN
+    SET TRANSACTION READ WRITE;
+        ---kiem tra tinh trang hien tai
+        SELECT TinhTrangGiaoHang INTO tinh_trang_hien_tai FROM DonHang WHERE MaDonHang = ma_don_hang;
+        ---kiem tra xem xuat kho chua
+        SELECT COUNT(MaPhieuXuat) INTO dem_px FROM PhieuXuat WHERE MaDonHang = ma_don_hang;
+        ---if check phieu xuat
+        IF dem_px = 0 THEN raise_application_error(-20001,'Lỗi: Đơn hàng chưa được xuất kho!'); END IF;
+        ---if check tinh trang hien tai
+        IF tinh_trang_hien_tai IS NOT NULL THEN raise_application_error(-20001,'Lỗi: Tình trạng giao hàng của đơn hàng đã được cập nhật rồi!'); END IF;
+        ---if tinh trang dau vao not null thi bat dau
+        IF ma_don_hang IS NOT NULL AND ma_nhan_vien IS NOT NULL AND tinh_trang_giao_hang IS NOT NULL THEN
+            IF tinh_trang_giao_hang = 0 THEN 
+                UPDATE DonHang SET TinhTrangGiaoHang = 0, NhanVienPhuTrach = ma_nhan_vien WHERE MaDonHang = ma_don_hang;
+                SELECT MaKhachHang INTO ma_khach_hang FROM DonHang WHERE MaDonHang = ma_don_hang;
+                SELECT COUNT(MaThe) INTO dem_the FROM TheTichDiem WHERE MaKhachHang = ma_khach_hang;
+                ---kiem tra co the khong
+                IF dem_the > 0 THEN
+                    SELECT MaThe INTO ma_the FROM TheTichDiem WHERE MaKhachHang = ma_khach_hang;
+                    SELECT TongGiaTri INTO tong_gia_tri FROM DonHang WHERE MaDonHang = ma_don_hang;
+                    UPDATE TheTichDiem SET Diem = Diem + (tong_gia_tri / 1000) WHERE MaThe = ma_the;
+                    SELECT Diem INTO tong_diem FROM TheTichDiem WHERE MaThe = ma_the;
+                    ---if xep hang
+                    IF tong_diem >= 5000 AND tong_diem < 20000 THEN 
+                        UPDATE TheTichDiem SET Hang = 'H0002' WHERE MaThe = ma_the;
+                    ELSE IF tong_diem >= 20000 AND tong_diem < 50000 THEN 
+                        UPDATE TheTichDiem SET Hang = 'H0003' WHERE MaThe = ma_the; 
+                    ELSE  
+                        UPDATE TheTichDiem SET Hang = 'H0004' WHERE MaThe = ma_the;  
+                        END IF;
+                    END IF;---end if xep hang
+                END IF;---end if kiem tra the
+                ---mo cursor
+                OPEN c_ctdh; 
+                LOOP 
+                FETCH c_ctdh into c_dh_sp, c_dh_sl; 
+                    EXIT WHEN c_ctdh%notfound;
+                    WHILE c_dh_sl > 0
+                    LOOP
+                        INSERT INTO PhieuBaoHanh(MaPhieuBH,MaSanPham,MaKhachHang,MaDonHang,NgayTao,NgayHetHan,TrangThai)
+                        VALUES('1',c_dh_sp,ma_khach_hang,ma_don_hang,CURRENT_DATE,ADD_MONTHS(CURRENT_DATE,12),0);
+                        c_dh_sl := c_dh_sl - 1;
+                    END LOOP;
+                END LOOP; 
+                CLOSE c_ctdh;
+                COMMIT;
+            ELSE 
+                UPDATE DonHang SET TinhTrangGiaoHang = tinh_trang_giao_hang, NhanVienPhuTrach = ma_nhan_vien WHERE MaDonHang = ma_don_hang;
+                UPDATE PhieuXuat SET TrangThai = 1 WHERE MaDonHang = ma_don_hang;
+                OPEN c_ctpx; 
+                LOOP 
+                FETCH c_ctpx into c_px_mapx, c_px_sp, c_px_sl; 
+                    EXIT WHEN c_ctpx%notfound;
+                    SELECT MaKho INTO get_ma_kho FROM PhieuXuat WHERE MaPhieuXuat = c_px_mapx;
+                    UPDATE ChiTietKho SET SoLuong = SoLuong + c_px_sl;
+                END LOOP; 
+                CLOSE c_ctpx;
+                COMMIT;
+            END IF;
+        ---nguoc lai input null thi bao loi
+        ELSE raise_application_error(-20001,'Lỗi: Đơn hàng chưa được xuất kho!');---end else input null  
+        END IF;---end if tinh trang dau vao not null
+    EXCEPTION
+        WHEN OTHERS THEN
+        ROLLBACK;
+END; 
+   
+EXECUTE Proc_Tinh_Trang_Giao_Hang('DH00000001','NV00000001',0);
+SELECT * FROM DonHang;
+SELECT * FROM TheTichDiem;
+SELECT * FROM PhieuBaoHanh;
+DELETE FROM PhieuBaoHanh;
+UPDATE DonHang SET TinhTrangXacNhan = 0, TinhTrangThanhToan = 0, TinhTrangGiaoHang = NULL WHERE MaDOnHang = 'DH00000001';
+COMMIT;
