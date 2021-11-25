@@ -550,9 +550,10 @@ SELECT * FROM ChiTietKho Where MaKho = 'K0001';
 ------KhachHang------
 INSERT INTO KhachHang(TenKhachHang,SDT,DiaChi,ThanhPho,Email,TaiKhoan,MatKhau,TrangThai)
 VALUES(N'Phan Hữu Đăng','0909119459',N'50 Thành Thái','TP001','phanhuudang@gmail.com','phanhuudang','123456',0);
+INSERT INTO KhachHang(TenKhachHang,SDT,DiaChi,ThanhPho,Email,TaiKhoan,MatKhau,TrangThai)
+VALUES(N'Trần Văn C','0999111454',N'54/23/4 Nguyễn Oanh','TP002','tranvanc@gmail.com','khachhang2','123456',0);
 
 SELECT * FROM KhachHang;
-
 ------HangTIchDiem------
 INSERT INTO HangTichDiem(TenHang)
 VALUES(N'Đồng');
