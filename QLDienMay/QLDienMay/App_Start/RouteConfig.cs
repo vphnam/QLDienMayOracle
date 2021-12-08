@@ -18,6 +18,16 @@ namespace QLDienMay
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Login",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
+                );
+            routes.MapRoute(
+                name: "KHLogin",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "KhachHang", action = "DangNhap", id = UrlParameter.Optional }
+                );
         }
     }
 }

@@ -129,7 +129,7 @@
     <Property Name="THANHPHO" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TAIKHOAN" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-    <Property Name="MATKHAU" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="MATKHAU" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
     <Property Name="TRANGTHAI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
     <NavigationProperty Name="DONHANGs" Relationship="Self.FK_KH_DONHANG" FromRole="KHACHHANG" ToRole="DONHANG" />
     <NavigationProperty Name="PHIEUBAOHANHs" Relationship="Self.FK_KH_BAOHANH" FromRole="KHACHHANG" ToRole="PHIEUBAOHANH" />
@@ -198,7 +198,7 @@
     <Property Name="CUAHANG" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="HINHTHUC" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TAIKHOAN" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="MATKHAU" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MATKHAU" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="TRANGTHAI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CHUCVU1" Relationship="Self.FK_CHUCVU_NHANVIEN" FromRole="NHANVIEN" ToRole="CHUCVU" />
     <NavigationProperty Name="CUAHANG1" Relationship="Self.FK_CH_NHANVIEN" FromRole="NHANVIEN" ToRole="CUAHANG" />

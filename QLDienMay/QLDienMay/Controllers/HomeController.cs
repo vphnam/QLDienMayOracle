@@ -34,6 +34,36 @@ namespace QLDienMay.Controllers
             }
             return lstDisSp.OrderBy(n => n.maSanPham).ToList();
         }
+        public List<DisplaySP> LayDsSpByMaDM(string maDm)
+        {
+            List<string> lstLoai = db.LOAIs.Where(n => n.MADANHMUC == maDm.Trim()).OrderBy(n => n.MALOAI).Select(n => n.MALOAI).ToList();
+            List<SANPHAM> lstSP = db.SANPHAMs.ToList();
+            List<DisplaySP> lstDisSp = new List<DisplaySP>();
+            foreach (var sp in lstSP)
+            {
+                bool flag = sp.LOAIs.Select(n => n.MALOAI).Intersect(lstLoai).Any();
+                if(flag == true)
+                {
+                    DisplaySP disSp = new DisplaySP();
+                    disSp.maSanPham = sp.MASANPHAM;
+                    disSp.tenSanPham = sp.TENSANPHAM;
+                    disSp.anhMinhHoa = sp.ANHMINHHOA;
+                    disSp.donGia = sp.DONGIA;
+                    disSp.maKhuyenMai = sp.MAKHUYENMAI;
+                    if (disSp.maKhuyenMai != null)
+                    {
+                        var km = db.KHUYENMAIs.Find(disSp.maKhuyenMai);
+                        double phantramkm = (double)km.PHANTRAMKHUYENMAI;
+                        disSp.giaKhuyenMai = (decimal)sp.DONGIA - ((decimal)sp.DONGIA * (decimal)phantramkm);
+                    }
+                    else
+                        disSp.giaKhuyenMai = sp.DONGIA;
+                    lstDisSp.Add(disSp);
+                }
+            }       
+            
+            return lstDisSp.OrderBy(n => n.maSanPham).ToList();
+        }
         public ActionResult Index()
         {
             List<DisplaySP> lstDisMon = LayDsSp();
@@ -47,13 +77,19 @@ namespace QLDienMay.Controllers
         {
             return PartialView(db.LOAIs.Where(n => n.MADANHMUC == maDm).OrderBy(n => n.MALOAI).ToList());
         }
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult SortByDM(string maDm)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            List<DisplaySP> lstDisMon = LayDsSpByMaDM(maDm);
+            DANHMUC dm = db.DANHMUCs.Find(maDm.Trim());
+            ViewBag.TenDM = dm.TENDANHMUC.ToString();
+            return View(lstDisMon);
         }
-
+        public ActionResult SortByLoai()
+        {
+            List<DisplaySP> lstDisMon = LayDsSp();
+            return View(lstDisMon);
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

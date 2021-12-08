@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Bootstrap Themes by 365Bootstrap dot com - Free Responsive Html5 Templates">
+    <meta name="author" content="http://www.365bootstrap.com">
+
+    <title>Electronic Shop</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/Assets/css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Assets/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="~/Assets/font-awesome/css/font-awesome.min.css"  type="text/css">
+    <link rel="stylesheet" href="~/Assets/fonts/font-slider.css" type="text/css">
+
+    <!-- jQuery and Modernizr-->
+    <script src="~/Assets/js/jquery-2.1.1.js"></script>
+
+    <!-- Core JavaScript Files -->
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!--Top-->
+    <nav id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <select class="language">
+                        <option value="Tiếng Việt" selected>Tiếng Việt</option>
+                        <option value="France">France</option>
+                        <option value="Germany">Germany</option>
+                        <option value="English">English</option>
+                    </select>
+                    @*<select class="currency">
+                            <option value="USD" selected>USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="DDD">DDD</option>
+                        </select>*@
+                </div>
+                <div class="col-xs-6">
+                    <ul class="top-link">
+                        <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng nhập", "Login", "Home")</a></li>
+                        <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng ký", "Signup", "Home")</a></li>
+                        <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Header-->
+    <header class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="logo"><img src="~/Assets/images/logoshop.png" /></div>
+            </div>
+            <div class="col-md-4">
+                <form class="form-search">
+                    <input type="text" class="input-medium search-query">
+                    <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <div id="cart"><a class="btn btn-1" href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span>CART : 0 ITEM</a></div>
+            </div>
+        </div>
+    </header>
+    <!--Navigation-->
+    <nav id="menu" class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <span id="heading" class="visible-xs">Categories</span>
+                <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Trang chủ", "Index", "Shop")
+                    </li>
+                    <li class="dropdown">
+                        @*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tủ lạnh - Tủ đông</a>*@
+                        @Html.ActionLink("Tủ lạnh - Tủ đông", "TuLanh", "Shop")
+                        <div class="dropdown-menu">
+                            <div class="dropdown-inner">
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Tủ lạnh</a></li>
+                                    <hr />
+                                    <li><a href="category.html">Samsung</a></li>
+                                    <li><a href="category.html">Panasonic</a></li>
+                                    <li><a href="category.html">LG</a></li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Tủ đông</a></li>
+                                    <hr />
+                                    <li><a href="category.html">Alaska</a></li>
+                                    <li><a href="category.html">Sanaky</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        @*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ti vi - Loa - Dàn Karaoke</a>*@
+                        @Html.ActionLink("Ti vi - Loa - Dàn Karaoke", "TiVi", "Shop")
+                        <div class="dropdown-menu">
+                            <div class="dropdown-inner">
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Ti vi</a></li>
+                                    <hr />
+                                    <li><a href="category.html">Samsung</a></li>
+                                    <li><a href="category.html">Sony</a></li>
+                                    <li><a href="category.html">LG</a></li>
+                                    <li><a href="category.html">Philips</a></li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Loa - Dàn Karaoke</a></li>
+                                    <hr />
+                                    <li><a href="category.html">Karaoke</a></li>
+                                    <li><a href="category.html">Micro</a></li>
+                                    <li><a href="category.html">Loa Bluetooth</a></li>
+                                    <li><a href="category.html">Dàn âm thanh</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        @*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Máy giặt - Máy nước nóng</a>*@
+                        @Html.ActionLink("Máy giặt - Máy nước nóng", "MayGiat", "Shop")
+                        <div class="dropdown-menu">
+                            <div class="dropdown-inner">
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Máy giặt</a></li>
+                                    <hr />
+                                    <li><a href="category.html">LG</a></li>
+                                    <li><a href="category.html">Electrolux</a></li>
+                                    <li><a href="category.html">Samsung</a></li>
+                                    <li><a href="category.html">Toshiba</a></li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Máy nước nóng</a></li>
+                                    <hr />
+                                    <li><a href="category.html">Ariston</a></li>
+                                    <li><a href="category.html">Panasonic</a></li>
+                                    <li><a href="category.html">Electrolux</a></li>
+                                    <li><a href="category.html">Anpha</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        @*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Điện thoại - Laptop</a>*@
+                        @Html.ActionLink("Điện thoại - Laptop", "Phone", "Shop")
+                        <div class="dropdown-menu" style="margin-left: -203.625px;">
+                            <div class="dropdown-inner">
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Điện thoại</a></li>
+                                    <hr />
+                                    <li><a href="category.html">iPhone</a></li>
+                                    <li><a href="category.html">Samsung</a></li>
+                                    <li><a href="category.html">OPPO</a></li>
+                                    <li><a href="category.html">Xiaomi</a></li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Tablet</a></li>
+                                    <hr />
+                                    <li><a href="category.html">iPad</a></li>
+                                    <li><a href="category.html">Samsung</a></li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Laptop</a></li>
+                                    <hr />
+                                    <li><a href="category.html">DELL</a></li>
+                                    <li><a href="category.html">Asus</a></li>
+                                    <li><a href="category.html">HP</a></li>
+                                    <li><a href="category.html">Apple</a></li>
+                                    <li><a href="category.html">Lenovo</a></li>
+                                </ul>
+                                <ul class="list-unstyled">
+                                    <li><a href="category.html">Máy tính bàn</a></li>
+                                    <hr />
+                                    <li><a href="category.html">DELL</a></li>
+                                    <li><a href="category.html">Asus</a></li>
+                                    <li><a href="category.html">HP</a></li>
+                                    <li><a href="category.html">Apple</a></li>
+                                    <li><a href="category.html">Acer</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+    <footer>
+        <div class="container">
+            <div class="wrap-footer">
+                <div class="row">
+                    <div class="col-md-3 col-footer footer-1">
+                        @*<img src="~/Assets/images/logoshop.png" />*@
+                        <div class="heading"><h4>DTNN Shop</h4></div>
+                        <p style="text-align: justify">Công ty cổ phần thương mại DTNN với triết lý kinh doanh "Tất cả cho khách hàng, khách hàng cho tất cả", Thương hiệu số một trong ngành Bán lẻ điện tử tiêu dùng và Trung tâm Thương mại, đạt nhiều giải thưởng trong nước và quốc tế, được người tiêu dùng tin tưởng và đánh giá cao.</p>
+                    </div>
+                    <div class="col-md-3 col-footer footer-2">
+                        <div class="heading"><h4>Dịch vụ khách hàng</h4></div>
+                        <ul>
+                            <li><a href="#">Thông tin giao hàng</a></li>
+                            <li><a href="#">Chính sách bảo mât</a></li>
+                            <li><a href="#">Điều khoản &Aacute; Điều kiện</a></li>
+                            <li><a href="#">Liên hệ với chúng tôi</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-footer footer-3">
+                        <div class="heading"><h4>Tài khoản của tôi</h4></div>
+                        <ul>
+                            <li><a href="#">Tài khoản của tôi</a></li>
+                            <li><a href="#">Thương hiệu</a></li>
+                            <li><a href="#">Phiếu quà tặng</a></li>
+                            <li><a href="#">Sản phẩm đặc biệt</a></li>
+                            <li><a href="#">Sơ đồ trang web</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-footer footer-4">
+                        <div class="heading"><h4>Liên hệ với chúng tôi</h4></div>
+                        <ul>
+                            <li><span class="glyphicon glyphicon-home"></span>Sư Vạn Hạnh, P13, Q10, TP.HCM</li>
+                            <li><span class="glyphicon glyphicon-earphone"></span>090654789321</li>
+                            <li><span class="glyphicon glyphicon-envelope"></span>infor@yoursite.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="pull-right">
+                            <ul>
+                                <li><img src="~/Assets/images/visa-curved-32px.png" /></li>
+                                <li><img src="~/Assets/images/paypal-curved-32px.png" /></li>
+                                <li><img src="~/Assets/images/discover-curved-32px.png" /></li>
+                                <li><img src="~/Assets/images/maestro-curved-32px.png" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

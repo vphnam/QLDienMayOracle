@@ -113,7 +113,7 @@
     <Property Name="THANHPHO" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="EMAIL" Type="char" MaxLength="50" Nullable="false" />
     <Property Name="TAIKHOAN" Type="char" MaxLength="50" />
-    <Property Name="MATKHAU" Type="char" MaxLength="50" />
+    <Property Name="MATKHAU" Type="char" MaxLength="100" />
     <Property Name="TRANGTHAI" Type="char" MaxLength="1" Nullable="false" />
   </EntityType>
   <EntityType Name="KHO">
@@ -168,7 +168,7 @@
     <Property Name="CUAHANG" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="HINHTHUC" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="TAIKHOAN" Type="char" MaxLength="50" Nullable="false" />
-    <Property Name="MATKHAU" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="MATKHAU" Type="char" MaxLength="100" Nullable="false" />
     <Property Name="TRANGTHAI" Type="char" MaxLength="1" Nullable="false" />
   </EntityType>
   <EntityType Name="PHANHOI">

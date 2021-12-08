@@ -3,5 +3,5 @@
 
 @foreach (var item in Model)
 { 
-    <li><a href="category.html">@item.TENLOAI</a></li>
+    <li>@Html.ActionLink(item.TENLOAI, "SortByLoai", "Home", new { maDm = item.MADANHMUC, maLoai = item.MALOAI })</li>
 }

@@ -54,9 +54,23 @@
                 </div>
                 <div class="col-xs-6">
                     <ul class="top-link">
-                        <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng nhập", "Login", "Home")</a></li>
-                        <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng ký", "Signup", "Home")</a></li>
-                        <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Liên hệ</a></li>
+                        @if (Session["KhachHang"] == null)
+                        {
+                            <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng nhập", "DangNhap", "KhachHang")</a></li>
+                            <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng ký", "DangKy", "KhachHang")</a></li>
+                            <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Liên hệ</a></li>
+                        }
+                        @if (Session["KhachHang"] != null)
+                        {
+                            <div class="dropdown">
+                                <button class="dropbtn"><strong>Thông tin tài khoản</strong></button>
+                                <div class="dropdown-content">
+                                    <a href="/Customer/Detail">Xem thông tin</a>
+                                    <a href="/Customer/DoiMK">Đổi mật khẩu</a>
+                                    <a href="/CustomerLogin/Logout">Đăng xuất</a>
+                                </div>
+                            </div>
+                        }
                     </ul>
                 </div>
             </div>
@@ -89,7 +103,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        @Html.ActionLink("Trang chủ", "Index", "Shop")
+                        @Html.ActionLink("Trang chủ", "Index", "Home")
                     </li>
                     <li class="dropdown">
                         @*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tủ lạnh - Tủ đông</a>*@

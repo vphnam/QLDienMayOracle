@@ -134,7 +134,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Code\Encryptor.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,6 +183,7 @@
     <Compile Include="Models\LOAI.cs">
       <DependentUpon>QLDienMayModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NHACUNGCAP.cs">
       <DependentUpon>QLDienMayModel.tt</DependentUpon>
     </Compile>
@@ -319,13 +322,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\QLDienMayModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLDienMayModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\QLDienMayModel.edmx.diagram">
-      <DependentUpon>QLDienMayModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Assets\font-awesome\fonts\fontawesome-webfont.woff" />
@@ -395,6 +391,13 @@
     <Content Include="Assets\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="Assets\fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="Assets\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <EntityDeploy Include="Models\QLDienMayModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLDienMayModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QLDienMayModel.edmx.diagram">
+      <DependentUpon>QLDienMayModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -406,7 +409,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -416,16 +421,20 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DanhMuc.cshtml" />
     <Content Include="Views\Home\Loai.cshtml" />
+    <Content Include="Views\KhachHang\DangNhap.cshtml" />
+    <Content Include="Views\Home\SortByDM.cshtml" />
+    <Content Include="Views\KhachHang\DangKy.cshtml" />
+    <Content Include="Views\KhachHang\QuenMatKhau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DangNhap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
