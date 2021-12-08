@@ -94,5 +94,10 @@ namespace QLDienMay.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult QuenMatKhau(string email)
+        {
+            return View();
+        }
     }
 }
