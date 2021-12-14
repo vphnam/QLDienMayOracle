@@ -1,0 +1,73 @@
+﻿@model QLDienMay.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "ThongTin";
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+}
+
+<div class="login100-form validate-form" style="height:400px; width:400px;">
+    <span class="login100-form-title">
+        <h1 style="font-weight: bold">Thông tin khách hàng</h1>
+    </span>
+    <dl class="dl-horizontal">
+        <dt style="font:bold">
+            @Html.DisplayNameFor(model => model.TENKHACHHANG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENKHACHHANG)
+        </dd>
+
+        <dt style="font:bold">
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt style="font:bold">
+            @Html.DisplayNameFor(model => model.DIACHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+        <dt style="font:bold">
+            Thành phố
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THANHPHO1.TENTHANHPHO)
+        </dd>
+
+        <dt style="font:bold">
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+
+    </dl>
+
+
+    <div class="text-center p-t-12">
+        <p>@Html.ActionLink("Cập nhật thông tin!", "CapNhat", "KhachHang", new { maKH = Model.MAKHACHHANG }, new { @style = "font-size:25px;font:bold;" }) </p>
+    </div>
+</div>
+<div class="text-center p-t-12" style="margin:0 0 50px 250px;">
+    <p>@Html.ActionLink("Mua hàng ngay", "Index", "Home", null, new { @style = "font-size:50px;font:bold;text-align:center;" }) </p>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+        window.onload = function () {
+            alert("@ViewBag.Message");
+            };
+    </script>
+}  

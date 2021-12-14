@@ -88,7 +88,7 @@
     <Property Name="MAKHACHHANG" Type="char" MaxLength="10" />
     <Property Name="MACUAHANG" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="THOIGIANTAO" Type="timestamp" Precision="6" />
-    <Property Name="MAVOUCHER" Type="char" MaxLength="10" />
+    <Property Name="MAVOUCHER" Type="varchar2" MaxLength="10" />
     <Property Name="LOAI" Type="char" MaxLength="1" />
     <Property Name="TINHTRANGXACNHAN" Type="char" MaxLength="1" />
     <Property Name="TINHTRANGTHANHTOAN" Type="char" MaxLength="1" />
@@ -268,7 +268,7 @@
     <Key>
       <PropertyRef Name="MAVOUCHER" />
     </Key>
-    <Property Name="MAVOUCHER" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MAVOUCHER" Type="varchar2" MaxLength="10" Nullable="false" />
     <Property Name="TENVOUCHER" Type="nvarchar2" MaxLength="50" Nullable="false" />
     <Property Name="PHANTRAMKHUYENMAI" Type="float" Precision="126" Scale="0" Nullable="false" />
     <Property Name="NGAYBATDAU" Type="timestamp" Precision="6" Nullable="false" />
@@ -834,9 +834,8 @@
     <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
   </Function>
   <Function Name="PROC_DOI_MAT_KHAU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
-    <Parameter Name="MA" Type="char" Mode="In" />
+    <Parameter Name="E_MAIL" Type="char" Mode="In" />
     <Parameter Name="LOAI" Type="number" Mode="In" />
-    <Parameter Name="MAT_KHAU_CU" Type="char" Mode="In" />
     <Parameter Name="MAT_KHAU_MOI" Type="char" Mode="In" />
     <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
   </Function>
@@ -988,6 +987,14 @@
     <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
     <Parameter Name="MA_NHAN_VIEN" Type="char" Mode="In" />
     <Parameter Name="TINH_TRANG_THANH_TOAN" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_THEM_CHI_TIET_DON_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="SO_LUONG" Type="number" Mode="In" />
+    <Parameter Name="DON_GIA" Type="number" Mode="In" />
+    <Parameter Name="THANH_TIEN" Type="number" Mode="In" />
     <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
   </Function>
   <Function Name="PROC_TINH_TRANG_GIAO_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">

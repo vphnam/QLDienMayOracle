@@ -1,0 +1,85 @@
+﻿@using QLDienMay.Models
+@model List<GioHang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div id="page-content" class="home-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading" style="text-align:center;"><h2>THÔNG TIN GIỎ HÀNG</h2></div>
+                <table align="center" border="4" style="width:100%;" class="table">
+                    <thead>
+                        <tr style="text-align:center;font-weight:bold;color:white;background-color:darkslategray">
+                            <td>Tên món</td>
+                            <td>Ảnh minh họa</td>
+                            <td>Số lượng</td>
+                            <td>Đơn giá</td>
+                            <td>Thành tiền</td>
+                            <td>###</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var sp in Model)
+                        {
+                            <tr style="text-align:center;font-weight:bold">
+                                <td width="300px"> @sp.tenSp </td>
+                                <td width="200px">
+                                    <a href="@Url.Action("Detail","Home", new {id = sp.maSp})">
+                                        <img style="width:150px;height:150px;" />
+                                    </a>
+                                </td>
+
+                                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @maSanPham = sp.maSp }))
+                                {
+                                    <td>
+                                        <input type="number" min="1" max="999" name="soLuongCapNhat" value="@sp.soLuong" style="background-color:lightgrey;width:80px;" />
+                                        <input type="submit" value="Cập nhật" class="zzbutton" />
+                                    </td>
+                                    <td>@Html.FormatValue(sp.donGia, "{0:#,###}") VNĐ</td>
+                                    <td>@Html.FormatValue(sp.thanhTien, "{0:#,###}") VNĐ</td>
+                                }
+                                <td>
+                                    <div>
+                                        <button style="width:100px;height:40px;font-size:15px">@Html.ActionLink("Xóa", "XoaSpTrongGio", "GioHang", new { maSanPham = sp.maSp },null)</button>                              
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                    <tr style="text-align:center;font-weight:bold;color:white;background-color:darkslategray">
+                        <td>Tên món</td>
+                        <td>Ảnh minh họa</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                        <td>###</td>
+                    </tr>
+
+                    <tr style="font-weight:bold;text-align:right;color:red">
+                        <td colspan="3">Số lượng sản phẩm: @ViewBag.TongSoLuong</td>
+                        <td colspan="3">Tổng tiền: @Html.FormatValue(ViewBag.TongTien, "{0:#,###}") VNĐ</td>
+                    </tr>
+                    <tr>
+                        <td colspan="8" style="font-weight:bold;text-align:center;font-size:30px;">
+                            <table border="0" style="display:inline;float:none;">
+                                <tr>
+                                    <td><button style="width:400px;height:60px;font-size:20px" >@Html.ActionLink("Đặt Hàng", "DatHang", "Giohang")</button></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" style="font-weight:bold;text-align:right">
+                            <button style="width:200px;height:40px;font-size:15px">@Html.ActionLink("Xóa Giỏ Hàng", "XoaGioHang")</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

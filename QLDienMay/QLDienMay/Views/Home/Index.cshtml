@@ -73,21 +73,32 @@
                 <div class="products">
                     @foreach (var item in Model)
                     {
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="product">
-                            <div class="image"><a href="/Home/Detail/@item.maSanPham"><img src="~/Assets/images/galaxy-note-2.jpg" /></a></div>
-                            <div class="buttons">
-                                <a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-                                <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
-                                <a class="btn compare" href="#"><span class="glyphicon glyphicon-transfer"></span></a>
-                            </div>
-                            <div class="caption">
-                                <div class="name"><h3><a href="/Home/Detail/@item.maSanPham">@item.tenSanPham</a></h3></div>
-                                <div class="price">@item.donGia<span>@item.giaKhuyenMai</span></div>
-                                <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="product">
+                                <div class="image"><a href="/Home/Detail/@item.maSanPham"><img src="~/Assets/images/galaxy-note-2.jpg" /></a></div>
+                                <div class="buttons">
+                                    <a class="btn cart" href="@Url.Action("ThemGioHang", "Giohang", new { @maSanPham = item.maSanPham, @soLuong = 1, @strURL = Request.Url.ToString() })"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                    <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
+                                    <a class="btn compare" href="#"><span class="glyphicon glyphicon-transfer"></span></a>
+                                </div>
+                                <div class="caption">
+                                    <div class="name" style="height:80px;"><h3><a href="/Home/Detail/@item.maSanPham">@item.tenSanPham</a></h3></div>
+                                    @if (item.giaKhuyenMai != 0)
+                                    {
+                                        <div class="price">
+                                            <span>@Html.FormatValue(item.donGia, "{0:#,###}") VNĐ</span>
+                                            @Html.FormatValue(item.giaKhuyenMai, "{0:#,###}") VNĐ
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <br />
+                                        <div class="price">@Html.FormatValue(item.donGia, "{0:#,###}") </div>
+                                    }
+                                    <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     }
 
                 </div>
@@ -105,3 +116,13 @@
         </div>
     </div>
 </div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+        window.onload = function () {
+            alert("@ViewBag.Message");
+            };
+    </script>
+} 

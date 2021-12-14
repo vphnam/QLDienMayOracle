@@ -83,8 +83,19 @@
                                         <a class="btn compare" href="#"><span class="glyphicon glyphicon-transfer"></span></a>
                                     </div>
                                     <div class="caption">
-                                        <div class="name"><h3><a href="/Home/Detail/@item.maSanPham">@item.tenSanPham</a></h3></div>
-                                        <div class="price">@item.donGia<span>@item.giaKhuyenMai</span></div>
+                                        <div class="name" style="height:80px;"><h3><a href="/Home/Detail/@item.maSanPham">@item.tenSanPham</a></h3></div>
+                                        @if (item.giaKhuyenMai != 0)
+                                        {
+                                            <div class="price">
+                                                <span>@Html.FormatValue(item.donGia, "{0:#,###}") VNĐ</span>
+                                                @Html.FormatValue(item.giaKhuyenMai, "{0:#,###}") VNĐ
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <br />
+                                            <div class="price">@Html.FormatValue(item.donGia, "{0:#,###}") </div>
+                                        }
                                         <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span></div>
                                     </div>
                                 </div>

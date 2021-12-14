@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHITIETDONHANG">
+    <Key>
+      <PropertyRef Name="MADONHANG" />
+      <PropertyRef Name="MASANPHAM" />
+    </Key>
+    <Property Name="MADONHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DONGIA" Type="number" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="THANHTIEN" Type="number" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHITIETKHO">
+    <Key>
+      <PropertyRef Name="MAKHO" />
+      <PropertyRef Name="MASANPHAM" />
+    </Key>
+    <Property Name="MAKHO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHITIETLOAI">
+    <Key>
+      <PropertyRef Name="MASANPHAM" />
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MALOAI" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHITIETPHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPHIEUNHAP" />
+      <PropertyRef Name="MASANPHAM" />
+    </Key>
+    <Property Name="MAPHIEUNHAP" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DONGIANHAP" Type="number" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHITIETPHIEUXUAT">
+    <Key>
+      <PropertyRef Name="MAPHIEUXUAT" />
+      <PropertyRef Name="MASANPHAM" />
+    </Key>
+    <Property Name="MAPHIEUXUAT" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHUCVU">
+    <Key>
+      <PropertyRef Name="MACHUCVU" />
+    </Key>
+    <Property Name="MACHUCVU" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TENCHUCVU" Type="nvarchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUAHANG">
+    <Key>
+      <PropertyRef Name="MACUAHANG" />
+    </Key>
+    <Property Name="MACUAHANG" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="THANHPHO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="CUAHANGTRUONG" Type="char" MaxLength="10" />
+    <Property Name="NGAYTHANHLAP" Type="timestamp" Precision="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DACDIEMNOIBAT">
+    <Key>
+      <PropertyRef Name="MASANPHAM" />
+      <PropertyRef Name="TENDACDIEM" />
+    </Key>
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENDACDIEM" Type="nvarchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DANHMUC">
+    <Key>
+      <PropertyRef Name="MADANHMUC" />
+    </Key>
+    <Property Name="MADANHMUC" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TENDANHMUC" Type="nvarchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="MADONHANG" />
+    </Key>
+    <Property Name="MADONHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NHANVIENPHUTRACH" Type="char" MaxLength="10" />
+    <Property Name="MAKHACHHANG" Type="char" MaxLength="10" />
+    <Property Name="MACUAHANG" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="THOIGIANTAO" Type="timestamp" Precision="6" />
+    <Property Name="MAVOUCHER" Type="varchar2" MaxLength="10" />
+    <Property Name="LOAI" Type="char" MaxLength="1" />
+    <Property Name="TINHTRANGXACNHAN" Type="char" MaxLength="1" />
+    <Property Name="TINHTRANGTHANHTOAN" Type="char" MaxLength="1" />
+    <Property Name="TINHTRANGGIAOHANG" Type="char" MaxLength="1" />
+    <Property Name="TONGGIATRI" Type="number" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="HANGTICHDIEM">
+    <Key>
+      <PropertyRef Name="MAHANG" />
+    </Key>
+    <Property Name="MAHANG" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TENHANG" Type="nvarchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKHACHHANG" />
+    </Key>
+    <Property Name="MAKHACHHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENKHACHHANG" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="SDT" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="THANHPHO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="EMAIL" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="TAIKHOAN" Type="char" MaxLength="50" />
+    <Property Name="MATKHAU" Type="char" MaxLength="100" />
+    <Property Name="TRANGTHAI" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KHO">
+    <Key>
+      <PropertyRef Name="MAKHO" />
+    </Key>
+    <Property Name="MAKHO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MACUAHANG" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TRUONGKHO" Type="char" MaxLength="10" />
+    <Property Name="DIACHI" Type="nvarchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KHUYENMAI">
+    <Key>
+      <PropertyRef Name="MAKHUYENMAI" />
+    </Key>
+    <Property Name="MAKHUYENMAI" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENKM" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="PHANTRAMKHUYENMAI" Type="float" Precision="126" Scale="0" Nullable="false" />
+    <Property Name="NGAYBATDAU" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="NGAYKETTHUC" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="MOTA" Type="nvarchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOAI">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TENLOAI" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="MADANHMUC" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TENNCC" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="MASOTHUE" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="DIACHI" Type="varchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANHANVIEN" />
+    </Key>
+    <Property Name="MANHANVIEN" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENNHANVIEN" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="NGAYSINH" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="SDT" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="EMAIL" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="GIOITINH" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CHUCVU" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="CUAHANG" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="HINHTHUC" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="TAIKHOAN" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="MATKHAU" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHANHOI">
+    <Key>
+      <PropertyRef Name="MAPHANHOI" />
+    </Key>
+    <Property Name="MAPHANHOI" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MAKHACHHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NOIDUNG" Type="nvarchar2" MaxLength="300" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="PHIEUBAOHANH">
+    <Key>
+      <PropertyRef Name="MAPHIEUBH" />
+    </Key>
+    <Property Name="MAPHIEUBH" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MAKHACHHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MADONHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NGAYTAO" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="NGAYHETHAN" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="PHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPHIEUNHAP" />
+    </Key>
+    <Property Name="MAPHIEUNHAP" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NHACUNGCAP" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="NHANVIENTRUCKHO" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MAKHO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="THOIGIANTAO" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="TONGGIATRI" Type="number" Precision="18" Scale="2" />
+    <Property Name="TRANGTHAI" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="PHIEUXUAT">
+    <Key>
+      <PropertyRef Name="MAPHIEUXUAT" />
+    </Key>
+    <Property Name="MAPHIEUXUAT" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NHANVIENTAOPHIEU" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NHANVIENTRUONGKHO" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MAKHO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MADONHANG" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="THOIGIANTAO" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="TONGGIATRI" Type="number" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="MASANPHAM" />
+    </Key>
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENSANPHAM" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="ANHMINHHOA" Type="varchar2" MaxLength="100" />
+    <Property Name="DONGIA" Type="number" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MAKHUYENMAI" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="THANHPHO">
+    <Key>
+      <PropertyRef Name="MATHANHPHO" />
+    </Key>
+    <Property Name="MATHANHPHO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TENTHANHPHO" Type="nvarchar2" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="THETICHDIEM">
+    <Key>
+      <PropertyRef Name="MATHE" />
+    </Key>
+    <Property Name="MATHE" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MAKHACHHANG" Type="char" MaxLength="10" />
+    <Property Name="HANG" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="NGAYTAO" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="DIEM" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="THONGSOKITHUAT">
+    <Key>
+      <PropertyRef Name="MASANPHAM" />
+      <PropertyRef Name="TENTHONGSO" />
+    </Key>
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENTHONGSO" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="MOTA" Type="nvarchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TINHNANG">
+    <Key>
+      <PropertyRef Name="MASANPHAM" />
+      <PropertyRef Name="TENTINHNANG" />
+    </Key>
+    <Property Name="MASANPHAM" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TENTINHNANG" Type="nvarchar2" MaxLength="100" Nullable="false" />
+    <Property Name="MOTA" Type="nvarchar2" MaxLength="400" Nullable="false" />
+    <Property Name="HINHANH" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="VOUCHER">
+    <Key>
+      <PropertyRef Name="MAVOUCHER" />
+    </Key>
+    <Property Name="MAVOUCHER" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TENVOUCHER" Type="nvarchar2" MaxLength="50" Nullable="false" />
+    <Property Name="PHANTRAMKHUYENMAI" Type="float" Precision="126" Scale="0" Nullable="false" />
+    <Property Name="NGAYBATDAU" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="NGAYKETTHUC" Type="timestamp" Precision="6" Nullable="false" />
+    <Property Name="MOTA" Type="nvarchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CH_NHANVIEN">
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUAHANG">
+        <PropertyRef Name="MACUAHANG" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="CUAHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CHUCVU_NHANVIEN">
+    <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="MACHUCVU" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="CHUCVU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUAHANG_DONHANG">
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUAHANG">
+        <PropertyRef Name="MACUAHANG" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MACUAHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUAHANG_KHO">
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="1" />
+    <End Role="KHO" Type="Self.KHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUAHANG">
+        <PropertyRef Name="MACUAHANG" />
+      </Principal>
+      <Dependent Role="KHO">
+        <PropertyRef Name="MACUAHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_BAOHANH">
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+    <End Role="PHIEUBAOHANH" Type="Self.PHIEUBAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONHANG">
+        <PropertyRef Name="MADONHANG" />
+      </Principal>
+      <Dependent Role="PHIEUBAOHANH">
+        <PropertyRef Name="MADONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DM_LOAI">
+    <End Role="DANHMUC" Type="Self.DANHMUC" Multiplicity="1" />
+    <End Role="LOAI" Type="Self.LOAI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANHMUC">
+        <PropertyRef Name="MADANHMUC" />
+      </Principal>
+      <Dependent Role="LOAI">
+        <PropertyRef Name="MADANHMUC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONHANG_CHITIETDONHANG">
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONHANG">
+        <PropertyRef Name="MADONHANG" />
+      </Principal>
+      <Dependent Role="CHITIETDONHANG">
+        <PropertyRef Name="MADONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DONHANG_PHIEUXUAT">
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONHANG">
+        <PropertyRef Name="MADONHANG" />
+      </Principal>
+      <Dependent Role="PHIEUXUAT">
+        <PropertyRef Name="MADONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HANGTHE_THETICHDIEM">
+    <End Role="HANGTICHDIEM" Type="Self.HANGTICHDIEM" Multiplicity="1" />
+    <End Role="THETICHDIEM" Type="Self.THETICHDIEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGTICHDIEM">
+        <PropertyRef Name="MAHANG" />
+      </Principal>
+      <Dependent Role="THETICHDIEM">
+        <PropertyRef Name="HANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KH_BAOHANH">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="PHIEUBAOHANH" Type="Self.PHIEUBAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Principal>
+      <Dependent Role="PHIEUBAOHANH">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KH_DONHANG">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KH_PHANHOI">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+    <End Role="PHANHOI" Type="Self.PHANHOI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Principal>
+      <Dependent Role="PHANHOI">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KH_THETICHDIEM">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="THETICHDIEM" Type="Self.THETICHDIEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Principal>
+      <Dependent Role="THETICHDIEM">
+        <PropertyRef Name="MAKHACHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KHO_CHITIETKHO">
+    <End Role="KHO" Type="Self.KHO" Multiplicity="1" />
+    <End Role="CHITIETKHO" Type="Self.CHITIETKHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHO">
+        <PropertyRef Name="MAKHO" />
+      </Principal>
+      <Dependent Role="CHITIETKHO">
+        <PropertyRef Name="MAKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KHO_PHIEUNHAP">
+    <End Role="KHO" Type="Self.KHO" Multiplicity="1" />
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHO">
+        <PropertyRef Name="MAKHO" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="MAKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KHO_PHIEUXUAT">
+    <End Role="KHO" Type="Self.KHO" Multiplicity="1" />
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHO">
+        <PropertyRef Name="MAKHO" />
+      </Principal>
+      <Dependent Role="PHIEUXUAT">
+        <PropertyRef Name="MAKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KM_SP">
+    <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHUYENMAI">
+        <PropertyRef Name="MAKHUYENMAI" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="MAKHUYENMAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOAI_CHITIETLOAI">
+    <End Role="LOAI" Type="Self.LOAI" Multiplicity="1" />
+    <End Role="CHITIETLOAI" Type="Self.CHITIETLOAI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAI">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="CHITIETLOAI">
+        <PropertyRef Name="MALOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NCC_PHIEUNHAP">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="1" />
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="NHACUNGCAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_CUAHANG">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="CUAHANG">
+        <PropertyRef Name="CUAHANGTRUONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_NVPHUTRACH">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="NHANVIENTRUCKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_DONHANG">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="NHANVIENPHUTRACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NV_KHO">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="KHO" Type="Self.KHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="KHO">
+        <PropertyRef Name="TRUONGKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NVTAOPHIEU_PHIEUXUAT">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="PHIEUXUAT">
+        <PropertyRef Name="NHANVIENTAOPHIEU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NVTRUONGKHO_PHIEUXUAT">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANHANVIEN" />
+      </Principal>
+      <Dependent Role="PHIEUXUAT">
+        <PropertyRef Name="NHANVIENTRUONGKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHIEUNHAP_CHITIETPHIEUNHAP">
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
+    <End Role="CHITIETPHIEUNHAP" Type="Self.CHITIETPHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUNHAP">
+        <PropertyRef Name="MAPHIEUNHAP" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUNHAP">
+        <PropertyRef Name="MAPHIEUNHAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHIEUXUAT_CTPHIEUXUAT">
+    <End Role="PHIEUXUAT" Type="Self.PHIEUXUAT" Multiplicity="1" />
+    <End Role="CHITIETPHIEUXUAT" Type="Self.CHITIETPHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUXUAT">
+        <PropertyRef Name="MAPHIEUXUAT" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUXUAT">
+        <PropertyRef Name="MAPHIEUXUAT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SANPHAM_CHITIETDONHANG">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CHITIETDONHANG" Type="Self.CHITIETDONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="CHITIETDONHANG">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SANPHAM_CHITIETKHO">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CHITIETKHO" Type="Self.CHITIETKHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="CHITIETKHO">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SANPHAM_CHITIETPHIEUNHAP">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CHITIETPHIEUNHAP" Type="Self.CHITIETPHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUNHAP">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SANPHAM_CTPHIEUXUAT">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CHITIETPHIEUXUAT" Type="Self.CHITIETPHIEUXUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="CHITIETPHIEUXUAT">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SP_BAOHANH">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="PHIEUBAOHANH" Type="Self.PHIEUBAOHANH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="PHIEUBAOHANH">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SP_CHITIETLOAI">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CHITIETLOAI" Type="Self.CHITIETLOAI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="CHITIETLOAI">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SP_DACDIEMNOIBAT">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="DACDIEMNOIBAT" Type="Self.DACDIEMNOIBAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="DACDIEMNOIBAT">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SP_THONGSOKITHUAT">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="THONGSOKITHUAT" Type="Self.THONGSOKITHUAT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="THONGSOKITHUAT">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SP_TINHNANG">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="TINHNANG" Type="Self.TINHNANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASANPHAM" />
+      </Principal>
+      <Dependent Role="TINHNANG">
+        <PropertyRef Name="MASANPHAM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TP_CUAHANG">
+    <End Role="THANHPHO" Type="Self.THANHPHO" Multiplicity="1" />
+    <End Role="CUAHANG" Type="Self.CUAHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHPHO">
+        <PropertyRef Name="MATHANHPHO" />
+      </Principal>
+      <Dependent Role="CUAHANG">
+        <PropertyRef Name="THANHPHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TP_KHACHANG">
+    <End Role="THANHPHO" Type="Self.THANHPHO" Multiplicity="1" />
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THANHPHO">
+        <PropertyRef Name="MATHANHPHO" />
+      </Principal>
+      <Dependent Role="KHACHHANG">
+        <PropertyRef Name="THANHPHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VOUCHER_DONHANG">
+    <End Role="VOUCHER" Type="Self.VOUCHER" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VOUCHER">
+        <PropertyRef Name="MAVOUCHER" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MAVOUCHER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="PROC_DANG_KY_KHACH_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_KHACH_HANG" Type="char" Mode="In" />
+    <Parameter Name="S_DT" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="char" Mode="In" />
+    <Parameter Name="THANH_PHO" Type="char" Mode="In" />
+    <Parameter Name="E_MAIL" Type="char" Mode="In" />
+    <Parameter Name="TAI_KHOAN" Type="char" Mode="In" />
+    <Parameter Name="MAT_KHAU" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DANG_NHAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TAI_KHOAN" Type="char" Mode="In" />
+    <Parameter Name="MAT_KHAU" Type="char" Mode="In" />
+    <Parameter Name="LOAI" Type="number" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+    <Parameter Name="RETURN_ID" Type="char" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_CHITIET_KHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHO" Type="char" Mode="In" />
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_CHITIET_LOAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="MA_LOAI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_CHUC_VU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_CHUC_VU" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_CUA_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_CUA_HANG" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_DAC_DIEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_DAC_DIEM" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_DANH_MUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DANH_MUC" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_HANG_TICH_DIEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_HANG" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_KHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHO" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_KHUYEN_MAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KM" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_LOAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_LOAI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_NCC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_NCC" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_NHAN_VIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_NHAN_VIEN" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_SAN_PHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_THONG_SO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_THONG_SO" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_TINH_NANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_TINH_NANG" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_TP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_TP" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DELETE_VOUCHER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_VOUCHER" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_DOI_MAT_KHAU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="E_MAIL" Type="char" Mode="In" />
+    <Parameter Name="LOAI" Type="number" Mode="In" />
+    <Parameter Name="MAT_KHAU_MOI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_GUI_PHAN_HOI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHACH_HANG" Type="char" Mode="In" />
+    <Parameter Name="NOI_DUNG" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_CHITIET_KHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHO" Type="char" Mode="In" />
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="SO_LUONG" Type="number" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_CHITIET_LOAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="MA_LOAI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_CHITIET_PHIEU_NHAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_PHIEU_NHAP" Type="char" Mode="In" />
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="SO_LUONG" Type="number" Mode="In" />
+    <Parameter Name="DON_GIA_NHAP" Type="number" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_CHUC_VU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_CHUC_VU" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_CUA_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="DIA_CHI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="THANH_PHO" Type="char" Mode="In" />
+    <Parameter Name="CUA_HANG_TRUONG" Type="char" Mode="In" />
+    <Parameter Name="NGAY_THANH_LAP" Type="timestamp" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_DAC_DIEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_DAC_DIEM" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_DANH_MUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_DANH_MUC" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_HANG_TICH_DIEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_HANG" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_KHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_CUA_HANG" Type="char" Mode="In" />
+    <Parameter Name="TRUONG_KHO" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_KHUYEN_MAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_KM" Type="nvarchar2" Mode="In" />
+    <Parameter Name="PHAN_TRAM_KHUYEN_MAI" Type="float" Mode="In" />
+    <Parameter Name="NGAY_BAT_DAU" Type="timestamp" Mode="In" />
+    <Parameter Name="NGAY_KET_THUC" Type="timestamp" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_LOAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DANH_MUC" Type="char" Mode="In" />
+    <Parameter Name="TEN_LOAI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_NCC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_NCC" Type="nvarchar2" Mode="In" />
+    <Parameter Name="MA_SO_THUE" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="varchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_NHAN_VIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_NV" Type="nvarchar2" Mode="In" />
+    <Parameter Name="NGAY_SINH" Type="timestamp" Mode="In" />
+    <Parameter Name="S_DT" Type="char" Mode="In" />
+    <Parameter Name="E_MAIL" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="GIOI_TINH" Type="char" Mode="In" />
+    <Parameter Name="CHUC_VU" Type="char" Mode="In" />
+    <Parameter Name="CUA_HANG" Type="char" Mode="In" />
+    <Parameter Name="HINH_THUC" Type="char" Mode="In" />
+    <Parameter Name="TAI_KHOAN" Type="char" Mode="In" />
+    <Parameter Name="MAT_KHAU" Type="char" Mode="In" />
+    <Parameter Name="TRANG_THAI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_PHIEU_NHAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="NHA_CUNG_CAP" Type="char" Mode="In" />
+    <Parameter Name="NHAN_VIEN_TRUC_KHO" Type="char" Mode="In" />
+    <Parameter Name="MA_KHO" Type="char" Mode="In" />
+    <Parameter Name="TONG_GIA_TRI" Type="number" Mode="In" />
+    <Parameter Name="MA_PN" Type="char" Mode="Out" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_SAN_PHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_SAN_PHAM" Type="nvarchar2" Mode="In" />
+    <Parameter Name="ANH_MINH_HOA" Type="varchar2" Mode="In" />
+    <Parameter Name="DON_GIA" Type="number" Mode="In" />
+    <Parameter Name="KHUYEN_MAI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_THONG_SO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_THONG_SO" Type="nvarchar2" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_TINH_NANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_TINH_NANG" Type="nvarchar2" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="HINH_ANH" Type="varchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_TP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="TEN_TP" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_INSERT_VOUCHER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_VOUCHER" Type="char" Mode="In" />
+    <Parameter Name="TEN_VOUCHER" Type="nvarchar2" Mode="In" />
+    <Parameter Name="PHAN_TRAM_KHUYEN_MAI" Type="float" Mode="In" />
+    <Parameter Name="NGAY_BAT_DAU" Type="timestamp" Mode="In" />
+    <Parameter Name="NGAY_KET_THUC" Type="timestamp" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_KIEM_TRA_EMAIL_KHACH_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="E_MAIL" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_TAO_DON_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHACH_HANG" Type="char" Mode="In" />
+    <Parameter Name="MA_CUA_HANG" Type="char" Mode="In" />
+    <Parameter Name="MA_VOUCHER" Type="char" Mode="In" />
+    <Parameter Name="TONG_GIA_TRI_DON" Type="number" Mode="In" />
+    <Parameter Name="MA_DON" Type="char" Mode="Out" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_TAO_THE_CHO_KHACH_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHACH_HANG" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_THANH_TOAN_DON_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
+    <Parameter Name="MA_NHAN_VIEN" Type="char" Mode="In" />
+    <Parameter Name="TINH_TRANG_THANH_TOAN" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_THEM_CHI_TIET_DON_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="SO_LUONG" Type="number" Mode="In" />
+    <Parameter Name="DON_GIA" Type="number" Mode="In" />
+    <Parameter Name="THANH_TIEN" Type="number" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_TINH_TRANG_GIAO_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
+    <Parameter Name="MA_NHAN_VIEN" Type="char" Mode="In" />
+    <Parameter Name="TINH_TRANG_GIAO_HANG" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_CHITIET_KHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHO" Type="char" Mode="In" />
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="SO_LUONG" Type="number" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_CHITIET_LOAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="MA_LOAI_CU" Type="char" Mode="In" />
+    <Parameter Name="MA_LOAI_MOI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_CHUC_VU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_CHUC_VU" Type="char" Mode="In" />
+    <Parameter Name="TEN_CHUC_VU" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_CUA_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_CUA_HANG" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="THANH_PHO" Type="char" Mode="In" />
+    <Parameter Name="CUA_HANG_TRUONG" Type="char" Mode="In" />
+    <Parameter Name="NGAY_THANH_LAP" Type="timestamp" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_DAC_DIEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_DAC_DIEM_CU" Type="nvarchar2" Mode="In" />
+    <Parameter Name="TEN_DAC_DIEM_MOI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_DANH_MUC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DANH_MUC" Type="char" Mode="In" />
+    <Parameter Name="TEN_DANH_MUC" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_HANG_TICH_DIEM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_HANG" Type="char" Mode="In" />
+    <Parameter Name="TEN_HANG" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_KHACH_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHACH_HANG" Type="char" Mode="In" />
+    <Parameter Name="TEN_KHACH_HANG" Type="nvarchar2" Mode="In" />
+    <Parameter Name="S_DT" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="THANH_PHO" Type="char" Mode="In" />
+    <Parameter Name="E_MAIL" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_KHO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KHO" Type="char" Mode="In" />
+    <Parameter Name="MA_CUA_HANG" Type="char" Mode="In" />
+    <Parameter Name="TRUONG_KHO" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_KHUYEN_MAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_KM" Type="char" Mode="In" />
+    <Parameter Name="TEN_KM" Type="nvarchar2" Mode="In" />
+    <Parameter Name="PHAN_TRAM_KHUYEN_MAI" Type="float" Mode="In" />
+    <Parameter Name="NGAY_BAT_DAU" Type="timestamp" Mode="In" />
+    <Parameter Name="NGAY_KET_THUC" Type="timestamp" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_LOAI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_LOAI" Type="char" Mode="In" />
+    <Parameter Name="MA_DANH_MUC" Type="char" Mode="In" />
+    <Parameter Name="TEN_LOAI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_NCC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_NCC" Type="char" Mode="In" />
+    <Parameter Name="TEN_NCC" Type="nvarchar2" Mode="In" />
+    <Parameter Name="MA_SO_THUE" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="varchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_NHAN_VIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_NHAN_VIEN" Type="char" Mode="In" />
+    <Parameter Name="TEN_NV" Type="nvarchar2" Mode="In" />
+    <Parameter Name="NGAY_SINH" Type="timestamp" Mode="In" />
+    <Parameter Name="S_DT" Type="char" Mode="In" />
+    <Parameter Name="E_MAIL" Type="char" Mode="In" />
+    <Parameter Name="DIA_CHI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="GIOI_TINH" Type="char" Mode="In" />
+    <Parameter Name="CHUC_VU" Type="char" Mode="In" />
+    <Parameter Name="CUA_HANG" Type="char" Mode="In" />
+    <Parameter Name="HINH_THUC" Type="char" Mode="In" />
+    <Parameter Name="TAI_KHOAN" Type="char" Mode="In" />
+    <Parameter Name="MAT_KHAU" Type="char" Mode="In" />
+    <Parameter Name="TRANG_THAI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_SAN_PHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+    <Parameter Name="TEN_SAN_PHAM" Type="nvarchar2" Mode="In" />
+    <Parameter Name="ANH_MINH_HOA" Type="varchar2" Mode="In" />
+    <Parameter Name="DON_GIA" Type="number" Mode="In" />
+    <Parameter Name="KHUYEN_MAI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_THONG_SO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_THONG_SO_CU" Type="nvarchar2" Mode="In" />
+    <Parameter Name="TEN_THONG_SO_MOI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_TINH_NANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_SP" Type="char" Mode="In" />
+    <Parameter Name="TEN_TINH_NANG_CU" Type="nvarchar2" Mode="In" />
+    <Parameter Name="TEN_TINH_NANG_MOI" Type="nvarchar2" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="HINH_ANH" Type="varchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_TP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_TP" Type="char" Mode="In" />
+    <Parameter Name="TEN_TP" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_UPDATE_VOUCHER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_VOUCHER" Type="char" Mode="In" />
+    <Parameter Name="TEN_VOUCHER" Type="nvarchar2" Mode="In" />
+    <Parameter Name="PHAN_TRAM_KHUYEN_MAI" Type="float" Mode="In" />
+    <Parameter Name="NGAY_BAT_DAU" Type="timestamp" Mode="In" />
+    <Parameter Name="NGAY_KET_THUC" Type="timestamp" Mode="In" />
+    <Parameter Name="MO_TA" Type="nvarchar2" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_XAC_NHAN_DON_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
+    <Parameter Name="MA_NHAN_VIEN" Type="char" Mode="In" />
+    <Parameter Name="TINH_TRANG_XAC_NHAN" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_XUAT_PHIEU_XUAT_VA_BAO_HANH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="NHAN_VIEN_TAO_PHIEU" Type="char" Mode="In" />
+    <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="PROC_XU_LY_PHAN_HOI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+    <Parameter Name="MA_PHAN_HOI" Type="char" Mode="In" />
+    <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+  </Function>
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="CHITIETDONHANG" EntityType="Self.CHITIETDONHANG" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="CHITIETKHO" EntityType="Self.CHITIETKHO" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="CHITIETLOAI" EntityType="Self.CHITIETLOAI" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="CHITIETPHIEUNHAP" EntityType="Self.CHITIETPHIEUNHAP" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="CHITIETPHIEUXUAT" EntityType="Self.CHITIETPHIEUXUAT" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="CUAHANG" EntityType="Self.CUAHANG" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="DACDIEMNOIBAT" EntityType="Self.DACDIEMNOIBAT" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="DANHMUC" EntityType="Self.DANHMUC" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="HANGTICHDIEM" EntityType="Self.HANGTICHDIEM" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="KHO" EntityType="Self.KHO" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="KHUYENMAI" EntityType="Self.KHUYENMAI" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="LOAI" EntityType="Self.LOAI" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="PHANHOI" EntityType="Self.PHANHOI" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="PHIEUBAOHANH" EntityType="Self.PHIEUBAOHANH" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="PHIEUXUAT" EntityType="Self.PHIEUXUAT" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="THANHPHO" EntityType="Self.THANHPHO" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="THETICHDIEM" EntityType="Self.THETICHDIEM" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="THONGSOKITHUAT" EntityType="Self.THONGSOKITHUAT" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="TINHNANG" EntityType="Self.TINHNANG" Schema="NAMVU" store:Type="Tables" />
+    <EntitySet Name="VOUCHER" EntityType="Self.VOUCHER" Schema="NAMVU" store:Type="Tables" />
+    <AssociationSet Name="FK_CH_NHANVIEN" Association="Self.FK_CH_NHANVIEN">
+      <End Role="CUAHANG" EntitySet="CUAHANG" />
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CHUCVU_NHANVIEN" Association="Self.FK_CHUCVU_NHANVIEN">
+      <End Role="CHUCVU" EntitySet="CHUCVU" />
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUAHANG_DONHANG" Association="Self.FK_CUAHANG_DONHANG">
+      <End Role="CUAHANG" EntitySet="CUAHANG" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUAHANG_KHO" Association="Self.FK_CUAHANG_KHO">
+      <End Role="CUAHANG" EntitySet="CUAHANG" />
+      <End Role="KHO" EntitySet="KHO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_BAOHANH" Association="Self.FK_DH_BAOHANH">
+      <End Role="DONHANG" EntitySet="DONHANG" />
+      <End Role="PHIEUBAOHANH" EntitySet="PHIEUBAOHANH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DM_LOAI" Association="Self.FK_DM_LOAI">
+      <End Role="DANHMUC" EntitySet="DANHMUC" />
+      <End Role="LOAI" EntitySet="LOAI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_CHITIETDONHANG" Association="Self.FK_DONHANG_CHITIETDONHANG">
+      <End Role="DONHANG" EntitySet="DONHANG" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DONHANG_PHIEUXUAT" Association="Self.FK_DONHANG_PHIEUXUAT">
+      <End Role="DONHANG" EntitySet="DONHANG" />
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HANGTHE_THETICHDIEM" Association="Self.FK_HANGTHE_THETICHDIEM">
+      <End Role="HANGTICHDIEM" EntitySet="HANGTICHDIEM" />
+      <End Role="THETICHDIEM" EntitySet="THETICHDIEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KH_BAOHANH" Association="Self.FK_KH_BAOHANH">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="PHIEUBAOHANH" EntitySet="PHIEUBAOHANH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KH_DONHANG" Association="Self.FK_KH_DONHANG">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KH_PHANHOI" Association="Self.FK_KH_PHANHOI">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="PHANHOI" EntitySet="PHANHOI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KH_THETICHDIEM" Association="Self.FK_KH_THETICHDIEM">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="THETICHDIEM" EntitySet="THETICHDIEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KHO_CHITIETKHO" Association="Self.FK_KHO_CHITIETKHO">
+      <End Role="KHO" EntitySet="KHO" />
+      <End Role="CHITIETKHO" EntitySet="CHITIETKHO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KHO_PHIEUNHAP" Association="Self.FK_KHO_PHIEUNHAP">
+      <End Role="KHO" EntitySet="KHO" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KHO_PHIEUXUAT" Association="Self.FK_KHO_PHIEUXUAT">
+      <End Role="KHO" EntitySet="KHO" />
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KM_SP" Association="Self.FK_KM_SP">
+      <End Role="KHUYENMAI" EntitySet="KHUYENMAI" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOAI_CHITIETLOAI" Association="Self.FK_LOAI_CHITIETLOAI">
+      <End Role="LOAI" EntitySet="LOAI" />
+      <End Role="CHITIETLOAI" EntitySet="CHITIETLOAI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NCC_PHIEUNHAP" Association="Self.FK_NCC_PHIEUNHAP">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_CUAHANG" Association="Self.FK_NHANVIEN_CUAHANG">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="CUAHANG" EntitySet="CUAHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_NVPHUTRACH" Association="Self.FK_NHANVIEN_NVPHUTRACH">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_DONHANG" Association="Self.FK_NV_DONHANG">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NV_KHO" Association="Self.FK_NV_KHO">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="KHO" EntitySet="KHO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NVTAOPHIEU_PHIEUXUAT" Association="Self.FK_NVTAOPHIEU_PHIEUXUAT">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NVTRUONGKHO_PHIEUXUAT" Association="Self.FK_NVTRUONGKHO_PHIEUXUAT">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHIEUNHAP_CHITIETPHIEUNHAP" Association="Self.FK_PHIEUNHAP_CHITIETPHIEUNHAP">
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+      <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHIEUXUAT_CTPHIEUXUAT" Association="Self.FK_PHIEUXUAT_CTPHIEUXUAT">
+      <End Role="PHIEUXUAT" EntitySet="PHIEUXUAT" />
+      <End Role="CHITIETPHIEUXUAT" EntitySet="CHITIETPHIEUXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SANPHAM_CHITIETDONHANG" Association="Self.FK_SANPHAM_CHITIETDONHANG">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CHITIETDONHANG" EntitySet="CHITIETDONHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SANPHAM_CHITIETKHO" Association="Self.FK_SANPHAM_CHITIETKHO">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CHITIETKHO" EntitySet="CHITIETKHO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SANPHAM_CHITIETPHIEUNHAP" Association="Self.FK_SANPHAM_CHITIETPHIEUNHAP">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CHITIETPHIEUNHAP" EntitySet="CHITIETPHIEUNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SANPHAM_CTPHIEUXUAT" Association="Self.FK_SANPHAM_CTPHIEUXUAT">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CHITIETPHIEUXUAT" EntitySet="CHITIETPHIEUXUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SP_BAOHANH" Association="Self.FK_SP_BAOHANH">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="PHIEUBAOHANH" EntitySet="PHIEUBAOHANH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SP_CHITIETLOAI" Association="Self.FK_SP_CHITIETLOAI">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CHITIETLOAI" EntitySet="CHITIETLOAI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SP_DACDIEMNOIBAT" Association="Self.FK_SP_DACDIEMNOIBAT">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="DACDIEMNOIBAT" EntitySet="DACDIEMNOIBAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SP_THONGSOKITHUAT" Association="Self.FK_SP_THONGSOKITHUAT">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="THONGSOKITHUAT" EntitySet="THONGSOKITHUAT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SP_TINHNANG" Association="Self.FK_SP_TINHNANG">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="TINHNANG" EntitySet="TINHNANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TP_CUAHANG" Association="Self.FK_TP_CUAHANG">
+      <End Role="THANHPHO" EntitySet="THANHPHO" />
+      <End Role="CUAHANG" EntitySet="CUAHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TP_KHACHANG" Association="Self.FK_TP_KHACHANG">
+      <End Role="THANHPHO" EntitySet="THANHPHO" />
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VOUCHER_DONHANG" Association="Self.FK_VOUCHER_DONHANG">
+      <End Role="VOUCHER" EntitySet="VOUCHER" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

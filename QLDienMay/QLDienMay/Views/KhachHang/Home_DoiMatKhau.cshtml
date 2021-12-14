@@ -1,0 +1,51 @@
+﻿@model QLDienMay.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Home_DoiMatKhau";
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+}
+
+<div class="login100-form validate-form" style="height:450px;">
+    <span class="login100-form-title">
+        <h2 style="font-weight: bold">Đổi mật khẩu</h2>
+    </span>
+    @using (Html.BeginForm())
+    {
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập xác thực mật khẩu">
+            <input class="input100" type="password" minlength="8" maxlength="32" name="oldPassWord" placeholder="Nhập mật khẩu cũ">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </span>
+        </div>
+        @Html.ValidationSummary(true)
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập mật khẩu">
+            @Html.PasswordFor(model => model.MATKHAU, new { @class = "input100", @placeholder = "Nhập mật khẩu mới" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập xác thực mật khẩu">
+            <input class="input100" type="password" minlength="8" maxlength="32" name="authPassWord" placeholder="Xác thực mật khẩu mới">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+        </div>
+        if (ViewData["LoiHome_DoiMK"] != null)
+        {
+            <div>
+                <p style="color:red;font:bold;font-size:15px;">*** @ViewData["LoiHome_DoiMK"]</p>
+            </div>
+        }
+        <div class="form-group">
+            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                <br />
+                <input type="submit" name="submit" class="login100-form-btn" style="width:100%" value="ĐỔI MẬT KHẨU" />
+            </div>
+        </div>
+    }
+</div>

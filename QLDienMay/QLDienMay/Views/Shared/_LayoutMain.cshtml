@@ -7,7 +7,7 @@
     <meta name="description" content="Free Bootstrap Themes by 365Bootstrap dot com - Free Responsive Html5 Templates">
     <meta name="author" content="http://www.365bootstrap.com">
 
-    <title>Electronic Shop</title>
+    <title>Điện máy NT</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css" type="text/css">
@@ -25,6 +25,7 @@
 
     <!-- Core JavaScript Files -->
     <script src="~/Assets/js/bootstrap.min.js"></script>
+ 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,40 +37,39 @@
 
 <body>
     <!--Top-->
-    <nav id="top">
+    <nav id="top" style="background-color:lightgray;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    <select class="language">
-                        <option value="Tiếng Việt" selected>Tiếng Việt</option>
-                        <option value="France">France</option>
-                        <option value="Germany">Germany</option>
-                        <option value="English">English</option>
-                    </select>
-                    @*<select class="currency">
-                        <option value="USD" selected>USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="DDD">DDD</option>
-                    </select>*@
-                </div>
-                <div class="col-xs-6">
-                    <ul class="top-link">
+                    <ul class="top-link" style="margin-right:-700px;">
                         @if (Session["KhachHang"] == null)
                         {
                             <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng nhập", "DangNhap", "KhachHang")</a></li>
                             <li><a><span class="glyphicon glyphicon-user"></span> @Html.ActionLink("Đăng ký", "DangKy", "KhachHang")</a></li>
-                            <li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> Liên hệ</a></li>
+                            <li><a><span class="glyphicon glyphicon-envelope"></span>@Html.ActionLink("Gửi phản hồi", "GuiPhanHoi", "KhachHang")</a> </li>
                         }
                         @if (Session["KhachHang"] != null)
                         {
-                            <div class="dropdown">
-                                <button class="dropbtn"><strong>Thông tin tài khoản</strong></button>
-                                <div class="dropdown-content">
-                                    <a href="/Customer/Detail">Xem thông tin</a>
-                                    <a href="/Customer/DoiMK">Đổi mật khẩu</a>
-                                    <a href="/CustomerLogin/Logout">Đăng xuất</a>
+                            <nav id="menu" class="navbar" style="margin-bottom:-20px; background-color:lightgray;">
+                                <div>
+                                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                        <ul class="nav navbar-nav">
+                                            <li class="dropdown">
+                                                @Html.ActionLink("Thông tin khách hàng", "ThongTin", "KhachHang")
+                                                <div class="dropdown-menu">
+                                                    <div class="dropdown-inner">
+                                                        <ul class="list-unstyled">
+                                                            <li><a href="/KhachHang/GuiPhanHoi">Gửi phản hồi</a></li>
+                                                            <li><a href="/KhachHang/Home_DoiMatKhau">Đổi mật khẩu</a></li>
+                                                            <li><a href="/KhachHang/DangXuat">Đăng xuất</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            </nav>
                         }
                     </ul>
                 </div>
@@ -89,7 +89,14 @@
                 </form>
             </div>
             <div class="col-md-4">
-                <div id="cart"><a class="btn btn-1" href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span>CART : 0 ITEM</a></div>
+                @if (Session["SoLuong"] != null)
+                {
+                    <div id="cart"><a class="btn btn-1" href="/GioHang/GioHang"><span class="glyphicon glyphicon-shopping-cart"></span>Giỏ hàng : @Session["SoLuong"].ToString()</a></div>
+                }
+                else
+                {
+                    <div id="cart"><a class="btn btn-1" href="/GioHang/GioHang"><span class="glyphicon glyphicon-shopping-cart"></span>Giỏ hàng : 0</a></div>
+                }
             </div>
         </div>
     </header>
@@ -109,12 +116,12 @@
                         @*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tủ lạnh - Tủ đông</a>*@
                         @Html.Action("DanhMuc", "Home")
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
     </nav>
-    
+
     @RenderBody()
     <footer>
         <div class="container">
@@ -159,7 +166,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        
+
                     </div>
                     <div class="col-md-6">
                         <div class="pull-right">
@@ -177,3 +184,16 @@
     </footer>
 </body>
 </html>
+
+@if (Session["Message"] != null)
+{
+    <script type="text/javascript">
+
+        window.onload = function () {
+            alert("@Session["Message"]");
+        };  
+    </script>
+}
+@{
+    Session["Message"] = null;
+}

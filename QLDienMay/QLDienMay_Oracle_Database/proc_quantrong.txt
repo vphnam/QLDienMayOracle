@@ -1547,14 +1547,14 @@ SELECT * FROM KHACHHANG;
 
 
 ---Proc doi mat khau---
-CREATE OR REPLACE PROCEDURE Proc_Doi_Mat_Khau (MA CHAR, LOAI INT, mat_khau_cu CHAR, mat_khau_moi CHAR, return_value OUT INT) AS
-check_mk CHAR(50);
+CREATE OR REPLACE PROCEDURE Proc_Doi_Mat_Khau (E_MAIL CHAR, LOAI INT, mat_khau_moi CHAR, return_value OUT INT) AS
+check_email NUMBER(1);
 BEGIN
     SET TRANSACTION READ WRITE;
     IF(LOAI = 0) THEN
-        SELECT MatKhau INTO check_mk FROM KhachHang WHERE MaKhachHang = MA;
-        IF(check_mk = mat_khau_cu) THEN  
-            UPDATE KhachHang SET MatKhau = mat_khau_moi WHERE MaKhachHang = MA;
+        SELECT COUNT(MAKHACHHANG) INTO check_email FROM KhachHang WHERE EMAIL = E_MAIL;
+        IF(check_email > 0) THEN  
+            UPDATE KhachHang SET MatKhau = mat_khau_moi WHERE EMAIL = E_MAIL;
             return_value := 0;
             COMMIT;    
         ELSE
@@ -1562,9 +1562,9 @@ BEGIN
             ROLLBACK;
         END IF;
     ELSIF(LOAI = 1) THEN
-        SELECT MatKhau INTO check_mk FROM NHANVIEN WHERE MANHANVIEN = MA;
-        IF(check_mk = mat_khau_cu) THEN  
-            UPDATE NHANVIEN SET MatKhau = mat_khau_moi WHERE MANHANVIEN = MA;
+        SELECT COUNT(MANHANVIEN) INTO check_email FROM NHANVIEN WHERE EMAIL = E_MAIL;
+        IF(check_email > 0) THEN  
+            UPDATE NHANVIEN SET MatKhau = mat_khau_moi WHERE EMAIL = E_MAIL;
             return_value := 0;
             COMMIT;    
         ELSE
@@ -1886,7 +1886,7 @@ LENGTHID NUMBER;
         SELECT COUNT(MaKhachHang) INTO check_kh FROM KhachHang WHERE MaKhachHang = ma_khach_hang;
         ---neu ma khach hang khong ton tai
         IF(check_kh = 0) THEN
-            RETURN_VALUE := 2;
+            RETURN_VALUE := 3;
         ---neu co voucher
         ELSIF ma_voucher IS NOT NULL THEN
             SELECT NgayBatDau INTO ngay_bd FROM VOUCHER WHERE MaVoucher = ma_voucher;
@@ -1939,6 +1939,18 @@ LENGTHID NUMBER;
         RETURN_VALUE := -1; 
    END;
 
+
+
+---THEM CHI TIET DON HANG
+CREATE OR REPLACE PROCEDURE Proc_Them_Chi_Tiet_Don_Hang (ma_don_hang IN CHAR, MA_SAN_PHAM CHAR, SO_LUONG IN INT, DON_GIA IN DECIMAL, THANH_TIEN IN DECIMAL, return_value OUT INT) IS
+BEGIN
+    INSERT INTO ChiTietDonHang(MaDonHang,MaSanPham,SoLuong,DonGia,ThanhTien)VALUES(MA_DON_HANG,MA_SAN_PHAM,SO_LUONG,DON_GIA,THANH_TIEN);
+    COMMIT;
+    RETURN_VALUE := 0;
+    EXCEPTION 
+        WHEN OTHERS THEN
+        RETURN_VALUE := -1;
+END;
 
 DECLARE
 madh1 CHAR(10);

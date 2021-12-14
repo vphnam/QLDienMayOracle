@@ -1,0 +1,142 @@
+﻿@model QLDienMay.Models.DisplaySP
+@using QLDienMay.Models;
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@{ 
+    List<TINHNANG> tinhNangs = ViewData["lstTinhNang"] as List<TINHNANG>;
+    List<DACDIEMNOIBAT> dacDiems = ViewData["lstDacDiem"] as List<DACDIEMNOIBAT>;
+    List<THONGSOKITHUAT> thongSos = ViewData["lstThongSo"] as List<THONGSOKITHUAT>;
+    List<DisplaySP> sPs = ViewData["lstSP"] as List<DisplaySP>;
+}
+
+<div id="page-content" class="single-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="/Home/SortByDM/@ViewBag.MaDanhMuc" >@ViewData["TenDm"]</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div id="main-content" class="col-md-8">
+                <div class="product">
+                    <div class="col-md-6">
+                        <div class="image">
+                            <img src="~/Assets/images/tulanh_toshiba.jpg" />
+                            <div class="image-more">
+                                <ul class="row">
+                                    <li class="col-lg-3 col-sm-3 col-xs-4">
+                                        <a href="#"><img class="img-responsive" src="~/Assets/images/tulanh_toshiba.jpg"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="caption">
+                            <div class="name"><h3>@Model.tenSanPham</h3></div>
+                            <div class="info">
+                            </div>
+                            @if (Model.giaKhuyenMai != 0)
+                            {
+                                <div class="price"> 
+                                    @Html.FormatValue(Model.giaKhuyenMai, "{0:#,###}") VNĐ
+                                    <span>@Html.FormatValue(Model.donGia, "{0:#,###}") VNĐ</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="price">@Html.FormatValue(Model.donGia, "{0:#,###}") </div>
+                            }
+                            <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                            <div class="well"><label>Số lượng mua: </label> <input class="form-inline quantity" type="number" min="1" max="999" value="1" style="width:80px;"><a href="#" class="btn btn-2 ">THÊM</a></div>
+                            
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="product-desc">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#description">Tính năng</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="description" class="tab-pane fade in active">
+                            @foreach (TINHNANG tn in tinhNangs)
+                            {
+                                <h4>@tn.TENTINHNANG</h4>
+                                <p>@tn.MOTA</p>
+
+                            }
+                        </div>                   
+                    </div>
+                </div>
+                <div class="product-related">
+                    <div class="heading"><h2>SẢN PHẨM TƯƠNG TỰ</h2></div>
+                    <div class="products">
+                        @foreach (DisplaySP sp in sPs)
+                        {
+                            <div class="col-lg-4 col-md-4 col-xs-12">
+                                <div class="product">
+                                    <div class="image"><a href="/Home/Detail/@sp.maSanPham"><img src="~/Assets/images/iphone.png" /></a></div>
+                                    <div class="buttons">
+                                        <a class="btn cart" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                        <a class="btn wishlist" href="#"><span class="glyphicon glyphicon-heart"></span></a>
+                                        <a class="btn compare" href="#"><span class="glyphicon glyphicon-transfer"></span></a>
+                                    </div>
+                                    <div class="caption">
+                                        <div class="name"><h3><a href="/Home/Detail/@sp.maSanPham">@sp.tenSanPham</a></h3></div>
+                                        @if (sp.giaKhuyenMai == 0)
+                                        {                                     
+                                            <div class="price" style="height:50px;">@Html.FormatValue(sp.donGia, "{0:#,###}") VNĐ</div>
+                                        }
+                                        else
+                                        { 
+                                            <div class="price" style="height:50px;">@Html.FormatValue(sp.giaKhuyenMai, "{0:#,###}") VNĐ <span>@Html.FormatValue(sp.donGia, "{0:#,###}") VNĐ</span></div>
+                                        }
+                                        <div class="rating"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div id="sidebar" class="col-md-4">
+                <div class="widget wid-categories">
+                    <div class="heading"><h4>Đặc điểm nổi bật: </h4></div>
+                    <div class="content">
+                        <ul>
+                            @foreach (DACDIEMNOIBAT dd in dacDiems)
+                            {
+                                <li>@dd.TENDACDIEM</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget wid-type">
+                    <div class="heading"><h4>Thông số kỹ thuật: </h4></div>
+                    <div class="content">
+                        <table style="width:100%;border:1px solid black;">
+                            @foreach (THONGSOKITHUAT ts in thongSos)
+                            {
+                                <tr style="border:1px solid black;">
+                                    <th style="border:1px solid black;">@ts.TENTHONGSO</th>
+                                    <th style="border:1px solid black;">@ts.MOTA</th>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+

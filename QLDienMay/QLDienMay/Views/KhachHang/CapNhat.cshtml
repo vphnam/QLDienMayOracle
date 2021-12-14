@@ -1,0 +1,73 @@
+﻿@model QLDienMay.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "CapNhat";
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
+}
+
+
+
+<div class="login100-form validate-form">
+    <span class="login100-form-title">
+        <h2 style="font-weight: bold">Cập nhật thông tin</h2>
+    </span>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập họ tên">
+            @Html.TextBoxFor(model => model.TENKHACHHANG, new { @class = "input100", @placeholder = "Nhập họ và tên" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.TENKHACHHANG, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập số điện thoại">
+            @Html.TextBoxFor(model => model.SDT, new { @class = "input100", @placeholder = "Nhập số điện thoại" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-phone-square" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập địa chỉ">
+            @Html.TextBoxFor(model => model.DIACHI, new { @class = "input100", @placeholder = "Nhập địa chỉ" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-building-o" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div style="display:inline">
+            <h3 style="font-weight: bold; display:inline">Thành phố: </h3>
+            @Html.DropDownList("maTP", new SelectList(ViewBag.TP, "MATHANHPHO", "TENTHANHPHO"), new { @style = "height:50px" })
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Định dạng email bắt buộc: ex@abc.xyz">
+            @Html.TextBoxFor(model => model.EMAIL, new { @class = "input100", @placeholder = "Nhập email" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+        </div>
+
+
+        if (ViewData["LoiCN"] != null)
+        {
+            <div>
+                <p style="color:red;font:bold;font-size:15px;">*** @ViewData["LoiCN"]</p>
+            </div>
+        }
+        <div class="form-group">
+            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                <br />
+                <input type="submit" name="submit" class="login100-form-btn" style="width:100%" value="CẬP NHẬT THÔNG TIN" />
+            </div>
+        </div>
+    }
+</div>
+

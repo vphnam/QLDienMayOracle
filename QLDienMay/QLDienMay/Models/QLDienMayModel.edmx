@@ -93,7 +93,7 @@
           <Property Name="MAKHACHHANG" Type="char" MaxLength="10" />
           <Property Name="MACUAHANG" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="THOIGIANTAO" Type="timestamp" Precision="6" />
-          <Property Name="MAVOUCHER" Type="char" MaxLength="10" />
+          <Property Name="MAVOUCHER" Type="varchar2" MaxLength="10" />
           <Property Name="LOAI" Type="char" MaxLength="1" />
           <Property Name="TINHTRANGXACNHAN" Type="char" MaxLength="1" />
           <Property Name="TINHTRANGTHANHTOAN" Type="char" MaxLength="1" />
@@ -273,7 +273,7 @@
           <Key>
             <PropertyRef Name="MAVOUCHER" />
           </Key>
-          <Property Name="MAVOUCHER" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MAVOUCHER" Type="varchar2" MaxLength="10" Nullable="false" />
           <Property Name="TENVOUCHER" Type="nvarchar2" MaxLength="50" Nullable="false" />
           <Property Name="PHANTRAMKHUYENMAI" Type="float" Precision="126" Scale="0" Nullable="false" />
           <Property Name="NGAYBATDAU" Type="timestamp" Precision="6" Nullable="false" />
@@ -839,9 +839,8 @@
           <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
         </Function>
         <Function Name="PROC_DOI_MAT_KHAU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
-          <Parameter Name="MA" Type="char" Mode="In" />
+          <Parameter Name="E_MAIL" Type="char" Mode="In" />
           <Parameter Name="LOAI" Type="number" Mode="In" />
-          <Parameter Name="MAT_KHAU_CU" Type="char" Mode="In" />
           <Parameter Name="MAT_KHAU_MOI" Type="char" Mode="In" />
           <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
         </Function>
@@ -993,6 +992,14 @@
           <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
           <Parameter Name="MA_NHAN_VIEN" Type="char" Mode="In" />
           <Parameter Name="TINH_TRANG_THANH_TOAN" Type="char" Mode="In" />
+          <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="PROC_THEM_CHI_TIET_DON_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
+          <Parameter Name="MA_DON_HANG" Type="char" Mode="In" />
+          <Parameter Name="MA_SAN_PHAM" Type="char" Mode="In" />
+          <Parameter Name="SO_LUONG" Type="number" Mode="In" />
+          <Parameter Name="DON_GIA" Type="number" Mode="In" />
+          <Parameter Name="THANH_TIEN" Type="number" Mode="In" />
           <Parameter Name="RETURN_VALUE" Type="number" Mode="Out" />
         </Function>
         <Function Name="PROC_TINH_TRANG_GIAO_HANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="NAMVU">
@@ -1434,7 +1441,7 @@
           <Property Name="MAKHACHHANG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="MACUAHANG" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="THOIGIANTAO" Type="DateTime" Precision="6" />
-          <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="LOAI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="TINHTRANGXACNHAN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="TINHTRANGTHANHTOAN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
@@ -1673,7 +1680,7 @@
           <Key>
             <PropertyRef Name="MAVOUCHER" />
           </Key>
-          <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TENVOUCHER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PHANTRAMKHUYENMAI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NGAYBATDAU" Type="DateTime" Precision="6" Nullable="false" />
@@ -2399,9 +2406,8 @@
             <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PROC_DOI_MAT_KHAU">
-            <Parameter Name="MA" Mode="In" Type="String" />
+            <Parameter Name="E_MAIL" Mode="In" Type="String" />
             <Parameter Name="LOAI" Mode="In" Type="Decimal" />
-            <Parameter Name="MAT_KHAU_CU" Mode="In" Type="String" />
             <Parameter Name="MAT_KHAU_MOI" Mode="In" Type="String" />
             <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
           </FunctionImport>
@@ -2553,6 +2559,14 @@
             <Parameter Name="MA_DON_HANG" Mode="In" Type="String" />
             <Parameter Name="MA_NHAN_VIEN" Mode="In" Type="String" />
             <Parameter Name="TINH_TRANG_THANH_TOAN" Mode="In" Type="String" />
+            <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_THEM_CHI_TIET_DON_HANG">
+            <Parameter Name="MA_DON_HANG" Mode="In" Type="String" />
+            <Parameter Name="MA_SAN_PHAM" Mode="In" Type="String" />
+            <Parameter Name="SO_LUONG" Mode="In" Type="Decimal" />
+            <Parameter Name="DON_GIA" Mode="In" Type="Decimal" />
+            <Parameter Name="THANH_TIEN" Mode="In" Type="Decimal" />
             <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PROC_TINH_TRANG_GIAO_HANG">
@@ -3053,6 +3067,7 @@
           <FunctionImportMapping FunctionImportName="PROC_TAO_DON_HANG" FunctionName="Model.Store.PROC_TAO_DON_HANG" />
           <FunctionImportMapping FunctionImportName="PROC_TAO_THE_CHO_KHACH_HANG" FunctionName="Model.Store.PROC_TAO_THE_CHO_KHACH_HANG" />
           <FunctionImportMapping FunctionImportName="PROC_THANH_TOAN_DON_HANG" FunctionName="Model.Store.PROC_THANH_TOAN_DON_HANG" />
+          <FunctionImportMapping FunctionImportName="PROC_THEM_CHI_TIET_DON_HANG" FunctionName="Model.Store.PROC_THEM_CHI_TIET_DON_HANG" />
           <FunctionImportMapping FunctionImportName="PROC_TINH_TRANG_GIAO_HANG" FunctionName="Model.Store.PROC_TINH_TRANG_GIAO_HANG" />
           <FunctionImportMapping FunctionImportName="PROC_UPDATE_CHITIET_KHO" FunctionName="Model.Store.PROC_UPDATE_CHITIET_KHO" />
           <FunctionImportMapping FunctionImportName="PROC_UPDATE_CHITIET_LOAI" FunctionName="Model.Store.PROC_UPDATE_CHITIET_LOAI" />

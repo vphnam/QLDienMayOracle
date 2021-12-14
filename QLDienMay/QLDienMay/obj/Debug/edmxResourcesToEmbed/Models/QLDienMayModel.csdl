@@ -96,7 +96,7 @@
     <Property Name="MAKHACHHANG" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="MACUAHANG" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="THOIGIANTAO" Type="DateTime" Precision="6" />
-    <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="LOAI" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="TINHTRANGXACNHAN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="TINHTRANGTHANHTOAN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
@@ -335,7 +335,7 @@
     <Key>
       <PropertyRef Name="MAVOUCHER" />
     </Key>
-    <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MAVOUCHER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TENVOUCHER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PHANTRAMKHUYENMAI" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <Property Name="NGAYBATDAU" Type="DateTime" Precision="6" Nullable="false" />
@@ -1061,9 +1061,8 @@
       <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
     </FunctionImport>
     <FunctionImport Name="PROC_DOI_MAT_KHAU">
-      <Parameter Name="MA" Mode="In" Type="String" />
+      <Parameter Name="E_MAIL" Mode="In" Type="String" />
       <Parameter Name="LOAI" Mode="In" Type="Decimal" />
-      <Parameter Name="MAT_KHAU_CU" Mode="In" Type="String" />
       <Parameter Name="MAT_KHAU_MOI" Mode="In" Type="String" />
       <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
     </FunctionImport>
@@ -1215,6 +1214,14 @@
       <Parameter Name="MA_DON_HANG" Mode="In" Type="String" />
       <Parameter Name="MA_NHAN_VIEN" Mode="In" Type="String" />
       <Parameter Name="TINH_TRANG_THANH_TOAN" Mode="In" Type="String" />
+      <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_THEM_CHI_TIET_DON_HANG">
+      <Parameter Name="MA_DON_HANG" Mode="In" Type="String" />
+      <Parameter Name="MA_SAN_PHAM" Mode="In" Type="String" />
+      <Parameter Name="SO_LUONG" Mode="In" Type="Decimal" />
+      <Parameter Name="DON_GIA" Mode="In" Type="Decimal" />
+      <Parameter Name="THANH_TIEN" Mode="In" Type="Decimal" />
       <Parameter Name="RETURN_VALUE" Mode="Out" Type="Decimal" />
     </FunctionImport>
     <FunctionImport Name="PROC_TINH_TRANG_GIAO_HANG">

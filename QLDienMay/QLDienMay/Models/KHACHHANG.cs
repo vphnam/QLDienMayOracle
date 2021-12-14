@@ -23,6 +23,7 @@ namespace QLDienMay.Models
             this.PHANHOIs = new HashSet<PHANHOI>();
             this.THETICHDIEMs = new HashSet<THETICHDIEM>();
         }
+
         public string MAKHACHHANG { get; set; }
 
         [Display(Name = "Họ tên")]
@@ -34,7 +35,7 @@ namespace QLDienMay.Models
         [Display(Name = "Số điện thoại")]
         [Required(ErrorMessage = "Vui lòng nhập {0}")]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "{0} gồm 10 số")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",ErrorMessage = "{0} không hợp lệ")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "{0} không hợp lệ")]
         public string SDT { get; set; }
 
         [Display(Name = "Địa chỉ")]
@@ -54,7 +55,7 @@ namespace QLDienMay.Models
         [Display(Name = "Tài khoản")]
         [Required(ErrorMessage = "Vui lòng nhập {0}")]
         [StringLength(50, MinimumLength = 8, ErrorMessage = "Nhập {0} từ 8 - 50 ký tự")]
-        [RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$",ErrorMessage = "{0} không bao gồm ký tự đặc biệt")]
+        [RegularExpression(@"^[0-9a-zA-Z''-'\s]{1,40}$", ErrorMessage = "{0} không bao gồm ký tự đặc biệt")]
         public string TAIKHOAN { get; set; }
 
         [Display(Name = "Mật khẩu")]
@@ -63,7 +64,7 @@ namespace QLDienMay.Models
         [RegularExpression(@"^.{7,}$", ErrorMessage = "Nhập {0} từ 8 - 32 ký tự")]
         public string MATKHAU { get; set; }
         public string TRANGTHAI { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DONHANG> DONHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

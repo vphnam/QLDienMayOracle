@@ -1,167 +1,92 @@
 ﻿@model QLDienMay.Models.KHACHHANG
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutKhachHang.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Đăng ký</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="~/Assets/images/favicon.ico" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Assets/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Assets/font-awesome/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Assets/css/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Assets/css/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Assets/css/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/Assets/css/util.css">
-    <link rel="stylesheet" type="text/css" href="~/Assets/css/login.css">
-    <!--===============================================================================================-->
-</head>
-<body>
+<div class="login100-form validate-form">
+    <span class="login100-form-title">
+        <h2 style="font-weight: bold">Đăng ký</h2>
+    </span>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập họ tên">
+            @Html.TextBoxFor(model => model.TENKHACHHANG, new { @class = "input100", @placeholder = "Nhập họ và tên" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.TENKHACHHANG, "", new { @class = "text-danger" })
+        </div>
 
-    <div class="limiter">
-        <div class="container-login100">
-            <div class="wrap-login100">
-                <div class="login100-pic js-tilt" data-tilt>
-                    <img src="~/Assets/images/img-01.png" alt="IMG">
-                </div>
-
-                <div class="login100-form validate-form">
-                    <span class="login100-form-title">
-                        <h2 style="font-weight: bold">Đăng ký</h2>
-                    </span>
-                    @using (Html.BeginForm())
-                    {
-                        @Html.ValidationSummary(true)
-                        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập họ tên">
-                            @Html.TextBoxFor(model => model.TENKHACHHANG, new { @class = "input100", @placeholder = "Nhập họ và tên" })
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </span>
-                            @Html.ValidationMessageFor(model => model.TENKHACHHANG, "", new { @class = "text-danger" })
-                        </div>
-
-                        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập số điện thoại">
-                            @Html.TextBoxFor(model => model.SDT, new { @class = "input100", @placeholder = "Nhập số điện thoại" })
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-phone-square" aria-hidden="true"></i>
-                            </span>
-                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập địa chỉ">
-                            @Html.TextBoxFor(model => model.DIACHI, new { @class = "input100", @placeholder = "Nhập địa chỉ" })
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-building-o" aria-hidden="true"></i>
-                            </span>
-                            @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
-                        </div>
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập số điện thoại">
+            @Html.TextBoxFor(model => model.SDT, new { @class = "input100", @placeholder = "Nhập số điện thoại" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-phone-square" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập địa chỉ">
+            @Html.TextBoxFor(model => model.DIACHI, new { @class = "input100", @placeholder = "Nhập địa chỉ" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-building-o" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+        </div>
 
 
-                        <div style="display:inline">
-                            <h3 style="font-weight: bold; display:inline">Thành phố: </h3>
-                            @Html.DropDownList("maTP", new SelectList(ViewBag.TP, "MATHANHPHO", "TENTHANHPHO"), new { @style = "height:50px" })
-                        </div>
+        <div style="display:inline">
+            <h3 style="font-weight: bold; display:inline">Thành phố: </h3>
+            @Html.DropDownList("maTP", new SelectList(ViewBag.TP, "MATHANHPHO", "TENTHANHPHO"), new { @style = "height:50px" })
+        </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Định dạng email bắt buộc: ex@abc.xyz">
-                            @Html.TextBoxFor(model => model.EMAIL, new { @class = "input100", @placeholder = "Nhập email" })
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </span>
-                            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
-                        </div>
+        <div class="wrap-input100 validate-input" data-validate="Định dạng email bắt buộc: ex@abc.xyz">
+            @Html.TextBoxFor(model => model.EMAIL, new { @class = "input100", @placeholder = "Nhập email" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+        </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập tài khoản">
-                            @Html.TextBoxFor(model => model.TAIKHOAN, new { @class = "input100", @placeholder = "Nhập tài khoản" })
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user-md" aria-hidden="true"></i>
-                            </span>
-                            @Html.ValidationMessageFor(model => model.TAIKHOAN, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập mật khẩu">
-                            @Html.PasswordFor(model => model.MATKHAU, new { @class = "input100", @placeholder = "Nhập mật khẩu" })
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
-                        </div>
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập tài khoản">
+            @Html.TextBoxFor(model => model.TAIKHOAN, new { @class = "input100", @placeholder = "Nhập tài khoản" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-user-md" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.TAIKHOAN, "", new { @class = "text-danger" })
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập mật khẩu">
+            @Html.PasswordFor(model => model.MATKHAU, new { @class = "input100", @placeholder = "Nhập mật khẩu" })
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+            @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+        </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập xác thực mật khẩu">
-                            <input class="input100" type="password" minlength="8" maxlength="32" name="authPassWord" placeholder="Xác thực mật khẩu">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        if (ViewData["LoiDK"] != null)
-                        {
-                            <div>
-                                <p style="color:red;font:bold;font-size:15px;">*** @ViewData["LoiDK"]</p>
-                            </div>
-                        }
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Đăng ký
-                            </button>
-                        </div>
-                    }
-
-                    @*<div class="text-center p-t-12">
-                            <span class="txt1">
-                                Quên
-                            </span>
-                            <a class="txt2" href="#">
-                                Tài khoản / Mật khẩu?
-                            </a>
-                        </div>*@
-
-                    <div class="text-center p-t-136">
-                        <a class="txt2" href="#">
-                            Đã có tài khoản?
-                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            <i>@Html.ActionLink("Đăng nhập", "Login", "Home")</i>
-
-                        </a>
-                    </div>
-                </div>
+        <div class="wrap-input100 validate-input" data-validate="Vui lòng nhập xác thực mật khẩu">
+            <input class="input100" type="password" minlength="8" maxlength="32" name="authPassWord" placeholder="Xác thực mật khẩu">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+        </div>
+        if (ViewData["LoiDK"] != null)
+        {
+            <div>
+                <p style="color:red;font:bold;font-size:15px;">*** @ViewData["LoiDK"]</p>
+            </div>
+        }
+        <div class="form-group">
+            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                <br />
+                <input type="submit" name="submit" class="login100-form-btn" style="width:100%" value="ĐĂNG KÝ" />
             </div>
         </div>
-    </div>
-
-
-
-
-    <!--===============================================================================================-->
-    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Assets/js/bootstrap/popper.js"></script>
-    <script src="~/Assets/js/bootstrap/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Assets/js/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/Assets/js/tilt.jquery.min.js"></script>
-    <script>
-        $('.js-tilt').tilt({
-            scale: 1.1
-        })
-    </script>
-    <!--===============================================================================================-->
-    <script src="~/Assets/js/login_main.js"></script>
-
-</body>
-</html>
+    }
+</div>

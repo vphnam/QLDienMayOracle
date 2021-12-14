@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\Encryptor.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">
@@ -168,6 +169,7 @@
     <Compile Include="Models\DONHANG.cs">
       <DependentUpon>QLDienMayModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\HANGTICHDIEM.cs">
       <DependentUpon>QLDienMayModel.tt</DependentUpon>
     </Compile>
@@ -235,10 +237,12 @@
     <Compile Include="Models\VOUCHER.cs">
       <DependentUpon>QLDienMayModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NganLuongAPI\APICheckoutV3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\animate.css" />
+    <Content Include="Assets\css\bank.css" />
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\hamburgers.min.css" />
     <Content Include="Assets\css\login.css" />
@@ -252,6 +256,7 @@
     <Content Include="Assets\fonts\font-slider.css" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Assets\fonts\montserrat\OFL.txt" />
+    <Content Include="Assets\images\bank_logo.png" />
     <Content Include="Assets\images\close.png" />
     <Content Include="Assets\images\discover-curved-32px.png" />
     <Content Include="Assets\images\favicon.ico" />
@@ -298,6 +303,7 @@
     <Content Include="Assets\js\jquery-2.1.1.js" />
     <Content Include="Assets\js\jquery-3.2.1.min.js" />
     <Content Include="Assets\js\login_main.js" />
+    <Content Include="Assets\js\nganluong.js" />
     <Content Include="Assets\js\photo-gallery.js" />
     <Content Include="Assets\js\select2.js" />
     <Content Include="Assets\js\select2.min.js" />
@@ -391,6 +397,8 @@
     <Content Include="Assets\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="Assets\fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="Assets\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Assets\template\MailDoiMK.cshtml" />
+    <Content Include="Assets\template\MailMaBaoMat.cshtml" />
     <EntityDeploy Include="Models\QLDienMayModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>QLDienMayModel.Designer.cs</LastGenOutput>
@@ -431,6 +439,19 @@
     <Content Include="Views\Home\SortByDM.cshtml" />
     <Content Include="Views\KhachHang\DangKy.cshtml" />
     <Content Include="Views\KhachHang\QuenMatKhau.cshtml" />
+    <Content Include="Views\Shared\_LayoutKhachHang.cshtml" />
+    <Content Include="Views\KhachHang\DoiMatKhau.cshtml" />
+    <Content Include="Views\KhachHang\DoiMKXong.cshtml" />
+    <Content Include="Views\KhachHang\ThongTin.cshtml" />
+    <Content Include="Views\KhachHang\CapNhat.cshtml" />
+    <Content Include="Views\KhachHang\GuiPhanHoi.cshtml" />
+    <Content Include="Views\KhachHang\Home_DoiMatKhau.cshtml" />
+    <Content Include="Views\Home\SortByLoai.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\GioHang\GioHangTrong.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\DatHangThanhCong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

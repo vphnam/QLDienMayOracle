@@ -14,14 +14,18 @@ namespace QLDienMay.Models
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Data.SqlClient;
+
     public partial class QLDienMayEntities : DbContext
     {
         public QLDienMayEntities()
             : base("name=QLDienMayEntities")
         {
         }
-    
+        public QLDienMayEntities(string code)
+            : base(code)
+        {
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -277,25 +281,21 @@ namespace QLDienMay.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_DELETE_VOUCHER", mA_VOUCHERParameter, rETURN_VALUE);
         }
     
-        public virtual int PROC_DOI_MAT_KHAU(string mA, Nullable<decimal> lOAI, string mAT_KHAU_CU, string mAT_KHAU_MOI, ObjectParameter rETURN_VALUE)
+        public virtual int PROC_DOI_MAT_KHAU(string e_MAIL, Nullable<decimal> lOAI, string mAT_KHAU_MOI, ObjectParameter rETURN_VALUE)
         {
-            var mAParameter = mA != null ?
-                new ObjectParameter("MA", mA) :
-                new ObjectParameter("MA", typeof(string));
+            var e_MAILParameter = e_MAIL != null ?
+                new ObjectParameter("E_MAIL", e_MAIL) :
+                new ObjectParameter("E_MAIL", typeof(string));
     
             var lOAIParameter = lOAI.HasValue ?
                 new ObjectParameter("LOAI", lOAI) :
                 new ObjectParameter("LOAI", typeof(decimal));
     
-            var mAT_KHAU_CUParameter = mAT_KHAU_CU != null ?
-                new ObjectParameter("MAT_KHAU_CU", mAT_KHAU_CU) :
-                new ObjectParameter("MAT_KHAU_CU", typeof(string));
-    
             var mAT_KHAU_MOIParameter = mAT_KHAU_MOI != null ?
                 new ObjectParameter("MAT_KHAU_MOI", mAT_KHAU_MOI) :
                 new ObjectParameter("MAT_KHAU_MOI", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_DOI_MAT_KHAU", mAParameter, lOAIParameter, mAT_KHAU_CUParameter, mAT_KHAU_MOIParameter, rETURN_VALUE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_DOI_MAT_KHAU", e_MAILParameter, lOAIParameter, mAT_KHAU_MOIParameter, rETURN_VALUE);
         }
     
         public virtual int PROC_GUI_PHAN_HOI(string mA_KHACH_HANG, string nOI_DUNG, ObjectParameter rETURN_VALUE)
@@ -720,6 +720,31 @@ namespace QLDienMay.Models
                 new ObjectParameter("TINH_TRANG_THANH_TOAN", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_THANH_TOAN_DON_HANG", mA_DON_HANGParameter, mA_NHAN_VIENParameter, tINH_TRANG_THANH_TOANParameter, rETURN_VALUE);
+        }
+    
+        public virtual int PROC_THEM_CHI_TIET_DON_HANG(string mA_DON_HANG, string mA_SAN_PHAM, Nullable<decimal> sO_LUONG, Nullable<decimal> dON_GIA, Nullable<decimal> tHANH_TIEN, ObjectParameter rETURN_VALUE)
+        {
+            var mA_DON_HANGParameter = mA_DON_HANG != null ?
+                new ObjectParameter("MA_DON_HANG", mA_DON_HANG) :
+                new ObjectParameter("MA_DON_HANG", typeof(string));
+    
+            var mA_SAN_PHAMParameter = mA_SAN_PHAM != null ?
+                new ObjectParameter("MA_SAN_PHAM", mA_SAN_PHAM) :
+                new ObjectParameter("MA_SAN_PHAM", typeof(string));
+    
+            var sO_LUONGParameter = sO_LUONG.HasValue ?
+                new ObjectParameter("SO_LUONG", sO_LUONG) :
+                new ObjectParameter("SO_LUONG", typeof(decimal));
+    
+            var dON_GIAParameter = dON_GIA.HasValue ?
+                new ObjectParameter("DON_GIA", dON_GIA) :
+                new ObjectParameter("DON_GIA", typeof(decimal));
+    
+            var tHANH_TIENParameter = tHANH_TIEN.HasValue ?
+                new ObjectParameter("THANH_TIEN", tHANH_TIEN) :
+                new ObjectParameter("THANH_TIEN", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PROC_THEM_CHI_TIET_DON_HANG", mA_DON_HANGParameter, mA_SAN_PHAMParameter, sO_LUONGParameter, dON_GIAParameter, tHANH_TIENParameter, rETURN_VALUE);
         }
     
         public virtual int PROC_TINH_TRANG_GIAO_HANG(string mA_DON_HANG, string mA_NHAN_VIEN, string tINH_TRANG_GIAO_HANG, ObjectParameter rETURN_VALUE)
